@@ -51,7 +51,19 @@ app.get('/', (req, res) => {
 // /products
 // This Route is used to retrieve the entire products table.
 app.get('/products', function (req, res) {
-  con.query("SELECT * FROM products", function (err, result, fields) {
+    connection.query("SELECT * FROM products",
+    function (err, result, fields) {
+      if (err) throw err;
+      res.end(JSON.stringify(result)); // Result in JSON format
+  });
+});
+
+
+// /products
+// Displays items by the longest expiration date
+app.get('/products/expirationDate', function (req, res) {
+  connection.query("SELECT * FROM products ORDER BY expirationDate",
+  function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result)); // Result in JSON format
   });
