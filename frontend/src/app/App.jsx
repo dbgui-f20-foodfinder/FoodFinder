@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
+import MapView from './mapView';
 import SearchView from './searchView'
 function App() {
-  return ( 
-  <SearchView> </SearchView>
+  return (
+    <MapView> </MapView>
   )
 }
 
