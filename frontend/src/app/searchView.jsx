@@ -5,12 +5,10 @@ import {Food} from '../models/food';
 export class SearchView extends React.Component{
   state = { 
         search: "",
-        foods: [ new Food(0, "Apple", 1, 10, "Fruit", "Yummy", "1.99", "https://placehold.it/300x300", 4.5),
-                new Food(1, "Banana", 5, 30, "Fruit", "Super Yummy", ".99", "https://placehold.it/300x300", 5),
-                new Food(2, "Brocolli", 7, 12, "Vegetable", "Yucky", "5.99", "https://placehold.it/300x300", 1.5) ]
-  };
+        foods: this.props.foods,
+        sort: ""
+  }; 
 
-  
 
   render(){
     return <div>
@@ -21,6 +19,21 @@ export class SearchView extends React.Component{
               type="text"
               value={this.state.search}
               onChange={event => this.setState({search: event.target.value })} />
+      <select
+              name="sort"
+              id="sort"
+              className="form-control"
+              value={this.state.sort}
+              onChange={event => this.setState({ sort: event.target.value })}>
+              <option value="ID">ID</option>
+              <option value="Name">Name</option>
+              <option value="Aisle">Aisle #</option>
+              <option value="Stock">Stock</option>
+              <option value="Food-Group">Food Group</option>
+              <option value="Cost">Cost</option>
+              <option value="Rating">Rating</option>
+
+          </select>
       <table class="table">
         <thead>
           <tr>
@@ -37,6 +50,7 @@ export class SearchView extends React.Component{
           {
             this.state.foods.map(x => {
             if(x.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === "")
+            
             return <tr>
               <td> {x.id} </td>
               <td> {x.name} </td>
