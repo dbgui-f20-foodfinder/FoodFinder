@@ -7,17 +7,21 @@ import ItemView from './itemView';
 export class MapView extends React.Component{
   state = { 
         search: "",
-        foods: [ 
-          new Food(2, "Brocolli", 7, 12, "Vegetable", "Yucky", "5.99", "https://placehold.it/100x100", 1.5) ,
-          new Food(0, "Apple", 1, 10, "Fruit", "Yummy", "1.99", "https://placehold.it/100x100", 4.5),
-                new Food(1, "Banana", 5, 30, "Fruit", "Super Yummy", ".99", "https://placehold.it/100x100", 5),
-                
-            ],
+        foods: [new Food(1, "Banana", 5, 30, "Fruit", "Super Yummy", ".99", "https://www.kroger.com/product/images/xlarge/front/0000000004011", 5),
+                new Food(0, "Apple", 1, 10, "Fruit", "Yummy", "1.99", "https://www.applesfromny.com/wp-content/uploads/2020/05/Jonagold_NYAS-Apples2.png", 4.5),
+                new Food(2, "Brocolli", 7, 12, "Vegetable", "Yucky", "5.99", "https://www.producemarketguide.com/sites/default/files/Commodities.tar/Commodities/broccoli_commodity-page.png", 1.5) 
+        ],
         cart: [new Food(1, "Banana", 5, 30, "Fruit", "Super Yummy", ".99", "https://www.kroger.com/product/images/xlarge/front/0000000004011", 5),
-            new Food(0, "Apple", 1, 10, "Fruit", "Yummy", "1.99", "https://www.applesfromny.com/wp-content/uploads/2020/05/Jonagold_NYAS-Apples2.png", 4.5),
-            new Food(2, "Brocolli", 7, 12, "Vegetable", "Yucky", "5.99", "https://www.producemarketguide.com/sites/default/files/Commodities.tar/Commodities/broccoli_commodity-page.png", 1.5) 
-      ]
+              new Food(0, "Apple", 1, 10, "Fruit", "Yummy", "1.99", "https://www.applesfromny.com/wp-content/uploads/2020/05/Jonagold_NYAS-Apples2.png", 4.5),
+              new Food(2, "Brocolli", 7, 12, "Vegetable", "Yucky", "5.99", "https://www.producemarketguide.com/sites/default/files/Commodities.tar/Commodities/broccoli_commodity-page.png", 1.5) 
+        ]
   };
+
+  addItemToCart(item){
+    var c = this.state.cart;
+    c.push(item);
+    this.setState({cart: c});
+  }
 
   render(){
     return <>
@@ -35,9 +39,9 @@ export class MapView extends React.Component{
         </div>
     </nav>
 
-      {/* <SearchView foods={this.state.foods}> </SearchView> */}
+      <SearchView foods={this.state.foods}> </SearchView>
       <CartView cart={this.state.cart}> </CartView>
-      {/* <ItemView item={this.state.cart[0]}></ItemView> */}
+      <ItemView addToCart={item => this.addItemToCart(item)} item={this.state.foods[2]}></ItemView>
     </>
   }
 

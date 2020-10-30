@@ -39,14 +39,14 @@ export class CartView extends React.Component{
                 <img className="img-thumbnail img-fluid w-25 p-10" alt="Current Product" src={x.imageURL}></img>
                 <div className="">
                   <h1> {x.name} </h1>
-                  <h3 className="text-white bg-primary badge"> ${x.price} </h3>
+                  <h5><span className="badge text-white bg-primary">${x.price}</span></h5>
                   <p className="description"> {x.description} </p>
                 </div>
               </div>
             </div>
           })
         }
-        <button> Search More Items</button>
+        <button type="button" class="btn btn-primary"> Search More Items</button>
         <h2> {this.state.price} </h2>
       </div>
     }

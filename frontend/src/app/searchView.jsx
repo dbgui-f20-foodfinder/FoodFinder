@@ -48,7 +48,7 @@ export class SearchView extends React.Component{
               className="form-control"
               type="text"
               value={this.state.search}
-              onChange={event => this.setState({sort: event.target.value })} />
+              onChange={event => this.setState({search: event.target.value })} />
       <select
               name="sort"
               id="sort"
