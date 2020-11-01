@@ -86,6 +86,36 @@ app.put('/products', async (req, res) => {
 });
 
 // -------------------------------------------------------------------------------------
+//                                        USER
+// -------------------------------------------------------------------------------------
+
+app.post('/newcustomer', async (req, res) => {
+	var newCustomer = {
+		userID : req.param('userID'),
+    username : req.param('username'),
+    password : req.param('password'),
+    firstName : req.param('firstName'),
+    lastName : req.param('lastName'),
+    inStoreCredit : 0,
+    userLocLong : req.param('userLocLong'),
+    userLocLat : req.param('userLocLat'),
+    accountTypeID : 1
+	};
+
+	connection.query('INSERT INTO user SET ?', newCustomer,
+		function (err, result, fields) {
+      if (err) throw err;
+      
+			else {
+				res.send(JSON.stringify(result));
+			}
+	});
+});
+
+
+
+
+// -------------------------------------------------------------------------------------
 //                                        OTHER
 // -------------------------------------------------------------------------------------
 
