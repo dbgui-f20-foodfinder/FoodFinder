@@ -69,6 +69,27 @@ app.get('/products/expirationDate', function (req, res) {
   });
 });
 
+app.get('/products/fresh', function (req, res) {
+  connection.query("SELECT * FROM products WHERE isFresh = 1", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+app.get('/products/local', function (req, res) {
+  connection.query("SELECT * FROM products WHERE isLocallyGrown = 1", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+app.get('/products/popular', function (req, res) {
+  connection.query("SELECT * FROM products ORDER BY popularity DESC", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
 // -------------------------------------------------------------------------------------
 //                                        OTHER
 // -------------------------------------------------------------------------------------

@@ -21,7 +21,7 @@ USE `food` ;
 -- Table `food`.`accountTypes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`accountTypes` (
-  `accountTypeID` INT NOT NULL,
+  `accountTypeID` INT NOT NULL AUTO_INCREMENT,
   `accountType` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`accountTypeID`))
 ENGINE = InnoDB
@@ -33,7 +33,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`colors`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`colors` (
-  `colorID` INT NOT NULL,
+  `colorID` INT NOT NULL AUTO_INCREMENT,
   `color` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`colorID`))
 ENGINE = InnoDB
@@ -73,7 +73,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`map`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`map` (
-  `rectangleID` INT NOT NULL,
+  `rectangleID` INT NOT NULL AUTO_INCREMENT,
   `x1` INT NULL DEFAULT NULL,
   `x2` INT NULL DEFAULT NULL,
   `y1` INT NULL DEFAULT NULL,
@@ -98,7 +98,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`notifCategories`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`notifCategories` (
-  `notifCategoryID` INT NOT NULL,
+  `notifCategoryID` INT NOT NULL AUTO_INCREMENT,
   `notifCategory` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`notifCategoryID`))
 ENGINE = InnoDB
@@ -110,7 +110,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`user` (
-  `userID` INT NOT NULL,
+  `userID` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NULL DEFAULT NULL,
   `password` VARCHAR(45) NULL DEFAULT NULL,
   `firstName` VARCHAR(45) NULL DEFAULT NULL,
@@ -133,7 +133,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`notifications`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`notifications` (
-  `notificationID` INT NOT NULL,
+  `notificationID` INT NOT NULL AUTO_INCREMENT,
   `userID` INT NOT NULL,
   `notifCategoryID` INT NOT NULL,
   `notifText` VARCHAR(450) NULL DEFAULT NULL,
@@ -155,7 +155,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`products` (
-  `productID` INT NOT NULL AUTO_INCREMENT,
+  `productID` INT NOT NULL AUTO_INCREMENT AUTO_INCREMENT,
   `name` VARCHAR(20) NULL DEFAULT NULL,
   `pricePerItem` INT NULL DEFAULT NULL,
   `numSearches` INT NULL DEFAULT NULL,
@@ -177,7 +177,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`productLocations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`productLocations` (
-  `locationID` INT NOT NULL,
+  `locationID` INT NOT NULL AUTO_INCREMENT,
   `productID` INT NOT NULL,
   INDEX `fk_productLocations_locations1_idx` (`locationID` ASC) VISIBLE,
   INDEX `fk_productLocations_products1_idx` (`productID` ASC) VISIBLE,
@@ -196,7 +196,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `food`.`specialLocations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`specialLocations` (
-  `specialLocID` INT NOT NULL,
+  `specialLocID` INT NOT NULL AUTO_INCREMENT,
   `specialLocType` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`specialLocID`))
 ENGINE = InnoDB
