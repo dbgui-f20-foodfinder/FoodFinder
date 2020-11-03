@@ -62,10 +62,12 @@ app.get('/products', function (req, res) {
 // /products
 // Displays items by the longest expiration date
 app.get('/products/expirationDate', function (req, res) {
-  connection.query("SELECT * FROM products ORDER BY expirationDate",
+  connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
   function (err, result, fields) {
     if (err) throw err;
-    res.end(JSON.stringify(result)); // Result in JSON format
+    else {
+      res.end(JSON.stringify(result)); // Result in JSON format
+    }
   });
 });
 

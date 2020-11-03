@@ -9,5 +9,14 @@ export class Food{
         this.price = price;
         this.imageURL = imageURL;
         this.rating = rating;
+        this.quantity = 0;
+    }
+
+    addQuantity(){
+        this.quantity++;
+    }
+
+    removeQuantity(){
+        this.quantity--;
     }
 }
