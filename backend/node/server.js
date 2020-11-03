@@ -6,7 +6,7 @@ const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 
 //mysql connection
 var connection = mysql.createConnection({
-  host: 'backend-db',
+  host: 'backend-db.czkrggrgqm0l.us-west-2.rds.amazonaws.com',
   port: '3306',
   user: 'mainuser',
   password: 'Password',
@@ -66,6 +66,27 @@ app.get('/products/expirationDate', function (req, res) {
   function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result)); // Result in JSON format
+  });
+});
+
+app.get('/products/fresh', function (req, res) {
+  connection.query("SELECT * FROM products WHERE isFresh = 1", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+app.get('/products/local', function (req, res) {
+  connection.query("SELECT * FROM products WHERE isLocallyGrown = 1", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+app.get('/products/popular', function (req, res) {
+  connection.query("SELECT * FROM products ORDER BY popularity DESC", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
   });
 });
 
