@@ -136,7 +136,6 @@ app.get('/locations/empty', function (req, res) {
 // -------------------------------------------------------------------------------------
 app.post('/newcustomer', async (req, res) => {
   var newCustomer = {
-    userID : req.param('userID'),
     username : req.param('username'),
     password : req.param('password'),
     firstName : req.param('firstName'),
@@ -152,6 +151,25 @@ app.post('/newcustomer', async (req, res) => {
     res.end(JSON.stringify(result));
   });
 });
+
+app.post('/newemployee', async (req, res) => {
+  var newEmployee = {
+    username : req.param('username'),
+    password : req.param('password'),
+    firstName : req.param('firstName'),
+    lastName : req.param('lastName'),
+    inStoreCredit : 0,
+    userLocLong : 0,
+    userLocLat : 0,
+    accountTypeID : 2
+  };
+
+  connection.query('INSERT INTO user SET ?', newEmployee, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 
 
 // -------------------------------------------------------------------------------------
