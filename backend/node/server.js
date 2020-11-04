@@ -71,6 +71,8 @@ app.get('/products/expirationDate', function (req, res) {
   });
 });
 
+// /products
+// Displays fresh items only
 app.get('/products/fresh', function (req, res) {
   connection.query("SELECT * FROM products WHERE isFresh = 1", function (err, result, fields) {
     if (err) throw error;
@@ -78,6 +80,8 @@ app.get('/products/fresh', function (req, res) {
   });
 });
 
+// /products
+// Displays local items only
 app.get('/products/local', function (req, res) {
   connection.query("SELECT * FROM products WHERE isLocallyGrown = 1", function (err, result, fields) {
     if (err) throw error;
@@ -85,8 +89,37 @@ app.get('/products/local', function (req, res) {
   });
 });
 
+// /products
+// Displays items ordered by popularity (highest first)
 app.get('/products/popular', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY popularity DESC", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// -------------------------------------------------------------------------------------
+//                              LOCATIONS (AISLES) TABLE
+// -------------------------------------------------------------------------------------
+
+app.get('/locations', function (req, res) {
+  connection.query("SELECT * FROM locations", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+app.get('/locations/empty', function (req, res) {
+  connection.query("SELECT * FROM locations WHERE ", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// /locations
+// Selects all empty locations. Returns locationID (this will probably change) of all locations without any products
+app.get('/locations/empty', function (req, res) {
+  connection.query("SELECT l.locationID FROM locations l LEFT OUTER JOIN products p ON l.locationID = p.locationID WHERE p.productID IS NULL", function (err, result, fields) {
     if (err) throw error;
     res.end(JSON.stringify(result));
   });
