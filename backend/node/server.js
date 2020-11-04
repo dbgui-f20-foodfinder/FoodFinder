@@ -59,15 +59,11 @@ app.get('/products', function (req, res) {
 });
 
 
-// /products
-// Displays items by the longest expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
   function (err, result, fields) {
     if (err) throw err;
-    else {
-      res.end(JSON.stringify(result)); // Result in JSON format
-    }
+    res.end(JSON.stringify(result)); // Result in JSON format
   });
 });
 
@@ -98,6 +94,16 @@ app.get('/products/popular', function (req, res) {
   });
 });
 
+app.put('/products/update/qty', async (req, res) => {
+  var productID = req.param('productID');
+  var qty = req.param('qty');
+
+  connection.query('UPDATE products SET qty = ? WHERE productID = ?', [qty, productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(results));
+  });
+});
+
 // -------------------------------------------------------------------------------------
 //                              LOCATIONS (AISLES) TABLE
 // -------------------------------------------------------------------------------------
@@ -124,6 +130,29 @@ app.get('/locations/empty', function (req, res) {
     res.end(JSON.stringify(result));
   });
 });
+
+// -------------------------------------------------------------------------------------
+//                                        USERS
+// -------------------------------------------------------------------------------------
+app.post('/newcustomer', async (req, res) => {
+  var newCustomer = {
+    userID : req.param('userID'),
+    username : req.param('username'),
+    password : req.param('password'),
+    firstName : req.param('firstName'),
+    lastName : req.param('lastName'),
+    inStoreCredit : 0,
+    userLocLong : req.param('userLocLong'),
+    userLocLat : req.param('userLocLat'),
+    accountTypeID : 1
+  };
+
+  connection.query('INSERT INTO user SET ?', newCustomer, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 
 // -------------------------------------------------------------------------------------
 //                                        OTHER
