@@ -6,6 +6,16 @@ export class ItemView extends React.Component{
     this.props.addToCart(this.props.item);
   }
 
+  booleanToString(input){
+    if(input){
+      return "Yes";
+    }
+    else{
+
+      return "No";
+    }
+  }
+
     render(){
       return <div className="container bg-light">
         <h1> Item View </h1>
@@ -15,13 +25,15 @@ export class ItemView extends React.Component{
           <h1> {this.props.item.name} </h1>
           <h3><span className="badge text-white bg-primary">${this.props.item.price}</span></h3>
           <p className="description"> {this.props.item.description} </p>
-          <h4> Food Group: {this.props.item.grouping} </h4>
+          <h4> Food Group: {this.props.item.category} </h4>
           <h4> Aisle {this.props.item.aisle} </h4>
           <h4> Stock in Store: {this.props.item.stock} </h4>
+          <h4> Locally Grown: {this.booleanToString(this.props.item.isLocallyGrown)} </h4>
+          <h4> Fresh: {this.booleanToString(this.props.item.isFresh)} </h4>
           <form>
-            <button type="button" class="btn btn-secondary" 
+            <button type="button" className="btn btn-secondary" 
               > Back </button>
-            <button type="button" class="btn btn-primary"
+            <button type="button" className="btn btn-primary"
             onClick={ () => this.onAddToCart() }> Add to Cart </button>
           </form>
         </div>

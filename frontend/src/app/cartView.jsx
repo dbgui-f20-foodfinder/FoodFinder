@@ -4,7 +4,7 @@ export class CartView extends React.Component{
     state = {
       price: 0,
       quantities: [],
-      items: []
+      cart: this.props.cart
     }
     
     componentWillMount(){
@@ -14,7 +14,7 @@ export class CartView extends React.Component{
 
     getPrice(){
       var totPrice = this.state.price;
-      this.props.cart.map(x =>{
+      this.state.cart.map(x =>{
         totPrice += parseFloat(x.price);
       });
       this.setState({price: totPrice});
@@ -23,7 +23,7 @@ export class CartView extends React.Component{
     getQuantities(){
       var quant = [];
       this.props.cart.map(x =>{
-        if(this.props.cart.includes(x.id)){
+        if(this.state.cart.includes(x.id)){
             // Need to implement
         }
       });
@@ -33,7 +33,7 @@ export class CartView extends React.Component{
     render(){
       return <div className="container bg-light">
         <h1> Cart View</h1>
-        { this.props.cart.map(x => {
+        { this.state.cart.map(x => {
             return <div key={x.id} className="container bg-light">
               <div className="d-inline-flex p-2">
                 <img className="img-thumbnail img-fluid w-25 p-10" alt="Current Product" src={x.imageURL}></img>
@@ -46,7 +46,7 @@ export class CartView extends React.Component{
             </div>
           })
         }
-        <button type="button" class="btn btn-primary"> Search More Items</button>
+        <button type="button" className="btn btn-primary"> Search More Items</button>
         <h2> {this.state.price} </h2>
       </div>
     }
