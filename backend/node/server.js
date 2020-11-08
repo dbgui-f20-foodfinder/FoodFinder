@@ -123,6 +123,36 @@ app.get('/products/location/empty', function (req, res) {
   });
 });
 
+// Gets prices in different stores
+app.get('/products/compare_prices', async (req, res) => {
+  var productName = req.param('productName');
+
+  connection.query('SELECT name, pricePerItem, storeID FROM products WHERE name = ?', [productName], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Gets qualities in different stores
+app.get('/products/compare_qty', async (req, res) => {
+  var productName = req.param('productName');
+
+  connection.query('SELECT name, qty, storeID FROM products WHERE name = ? order by qty', [productName], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Gets long in different stores
+app.get('/products/compare_qty', async (req, res) => {
+  var expDate = req.param('expDate');
+
+  connection.query('SELECT productID FROM peoducts WHERE expirationDate > CURDATE() + ?', [expDate], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 // -------------------------------------------------------------------------------------
 //                              LOCATIONS (AISLES) TABLE
 // -------------------------------------------------------------------------------------
