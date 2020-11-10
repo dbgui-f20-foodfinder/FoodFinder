@@ -147,7 +147,7 @@ app.get('/products/compare_qty', async (req, res) => {
 app.get('/products/compare_qty', async (req, res) => {
   var expDate = req.param('expDate');
 
-  connection.query('SELECT productID FROM peoducts WHERE expirationDate > CURDATE() + ?', [expDate], function (err, result, fields) {
+  connection.query('SELECT productID FROM peoducts WHERE expirationDate > addDate(CURDATE(), ?)', [expDate], function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
