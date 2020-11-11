@@ -58,7 +58,7 @@ app.get('/products', function (req, res) {
   });
 });
 
-
+// Displays items sorted by expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
   function (err, result, fields) {
@@ -192,6 +192,7 @@ app.get('/locations', function (req, res) {
   });
 });
 
+// 
 app.get('/locations/empty', function (req, res) {
   connection.query("SELECT * FROM locations WHERE ", function (err, result, fields) {
     if (err) throw error;
@@ -200,9 +201,9 @@ app.get('/locations/empty', function (req, res) {
 });
 
 // /locations
-// Selects all empty locations. Returns locationID (this will probably change) of all locations without any products
+// Selects all empty locations. Returns data from all locations without any products
 app.get('/locations/empty', function (req, res) {
-  connection.query("SELECT l.locationID FROM locations l LEFT OUTER JOIN products p ON l.locationID = p.locationID WHERE p.productID IS NULL", function (err, result, fields) {
+  connection.query("SELECT * FROM locations l LEFT OUTER JOIN products p ON l.locationID = p.locationID WHERE p.productID IS NULL", function (err, result, fields) {
     if (err) throw error;
     res.end(JSON.stringify(result));
   });
