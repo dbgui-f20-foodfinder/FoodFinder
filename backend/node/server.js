@@ -124,6 +124,7 @@ app.get('/products/location/empty', function (req, res) {
 });
 
 // Gets prices in different stores
+// 2.1
 app.get('/products/compare_prices', async (req, res) => {
   var productName = req.param('productName');
 
@@ -134,6 +135,7 @@ app.get('/products/compare_prices', async (req, res) => {
 });
 
 // Gets qualities in different stores
+// 2.2
 app.get('/products/compare_qty', async (req, res) => {
   var productName = req.param('productName');
 
@@ -144,6 +146,7 @@ app.get('/products/compare_qty', async (req, res) => {
 });
 
 // Gets long in different stores
+// 3.4
 app.get('/products/compare_qty', async (req, res) => {
   var expDate = req.param('expDate');
 
