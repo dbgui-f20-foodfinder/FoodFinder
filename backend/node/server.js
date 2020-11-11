@@ -134,6 +134,7 @@ app.get('/locations/empty', function (req, res) {
 // -------------------------------------------------------------------------------------
 //                                        USERS
 // -------------------------------------------------------------------------------------
+
 app.post('/newcustomer', async (req, res) => {
   var newCustomer = {
     username : req.param('username'),
