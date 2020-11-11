@@ -94,13 +94,62 @@ app.get('/products/popular', function (req, res) {
   });
 });
 
-app.put('/products/update/qty', async (req, res) => {
+app.put('/products/update/stock', async (req, res) => {
   var productID = req.param('productID');
-  var qty = req.param('qty');
+  var stock = req.param('stock');
 
-  connection.query('UPDATE products SET qty = ? WHERE productID = ?', [qty, productID], function (err, result, fields) {
+  connection.query('UPDATE products SET stock = ? WHERE productID = ?', [stock, productID], function (err, result, fields) {
     if (err) throw err;
-    res.end(JSON.stringify(results));
+    res.end(JSON.stringify(result));
+  });
+});
+
+// changes the aisle location of a product
+app.put('/products/update/location', async (req, res) => {
+  var productID = req.param('productID');
+  var locationID = req.param('locationID');
+
+  connection.query('UPDATE products SET locationID = ? WHERE productID = ?', [locationID, productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Gets all products that do not have a location (locationID = 0)
+app.get('/products/location/empty', function (req, res) {
+  connection.query("SELECT * FROM products WHERE locationID = 0", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Gets prices in different stores
+app.get('/products/compare_prices', async (req, res) => {
+  var productName = req.param('productName');
+
+  connection.query('SELECT name, pricePerItem, storeID FROM products WHERE name = ?', [productName], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Gets qualities in different stores
+app.get('/products/compare_qty', async (req, res) => {
+  var productName = req.param('productName');
+
+  connection.query('SELECT name, qty, storeID FROM products WHERE name = ? order by qty', [productName], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Gets long in different stores
+app.get('/products/compare_qty', async (req, res) => {
+  var expDate = req.param('expDate');
+
+  connection.query('SELECT productID FROM peoducts WHERE expirationDate > addDate(CURDATE(), ?)', [expDate], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
   });
 });
 
@@ -171,6 +220,21 @@ app.post('/newemployee', async (req, res) => {
   });
 });
 
+// how a user logins
+app.get('/login', function (req, res) {
+  var username = req.param('username');
+  var password = req.param('password');
+
+  connection.query("SELECT username FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
+    if (err) {
+      res.end("Incorrect username or password. Please try again!");
+      throw err;
+    } 
+    else  {
+      res.end(JSON.stringify(1));
+    }
+  });
+});
 
 
 // -------------------------------------------------------------------------------------

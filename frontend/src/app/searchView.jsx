@@ -6,41 +6,42 @@ export class SearchView extends React.Component{
   state = { 
         search: "",
         foods: this.props.foods,
-        sort: "Hello"
+        sort: "ID"
   }; 
 
-  sortItems(){
-    console.log(this.state.foods)
-    console.log(this.state.sort);
+  componentWillMount(){
+    this.sortItems("id");
+  }
 
-    switch(this.state.sort){
-      case "ID":
-        this.foods.sort((a, b) => (a.id > b.id) ? 1 : -1);
+  sortItems(field){
+    switch(field){
+      case "id":
+        this.state.foods.sort((a, b) => (a["id"] > b["id"]) ? 1 : -1);
         break;
-      case "Name":
-        console.log(this.state.foods)
-        this.foods.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      case "name":
+        this.state.foods.sort((a, b) => (a["name"] > b["name"]) ? 1 : -1);
         break;
-      case "Aisle":
-        this.foods.sort((a, b) => (a.aisle > b.aisle) ? 1 : -1);
+      case "aisle":
+        this.state.foods.sort((a, b) => (a["aisle"] > b["aisle"]) ? 1 : -1);
         break;
-      case "Stock":
-        this.foods.sort((a, b) => (a.stock > b.stock) ? 1 : -1);
+      case "stock":
+        this.state.foods.sort((a, b) => (a["stock"] > b["stock"]) ? 1 : -1);
         break; 
-      case "Food-Group":
-        this.foods.sort((a, b) => (a.grouping > b.grouping) ? 1 : -1);
+      case "category":
+        this.state.foods.sort((a, b) => (a["category"] > b["category"]) ? 1 : -1);
         break; 
-      case "Cost":
-        this.foods.sort((a, b) => (a.cost > b.cost) ? 1 : -1);
+      case "price":
+        this.state.foods.sort((a, b) => (a["price"] > b["price"]) ? 1 : -1);
         break;
-      case "Rating":
-        this.foods.sort((a, b) => (a.rating > b.rating) ? 1 : -1);
+      case "rating":
+        this.state.foods.sort((a, b) => (a["rating"] > b["rating"]) ? 1 : -1);
         break;
     }
   }
+  
 
   render(){
-    return <div>
+    return <div className="container bg-light">
       <h1> Search View</h1>
       <label htmlFor="searchBar"> Search For Food </label>
       <input name="searchBar"
@@ -49,24 +50,25 @@ export class SearchView extends React.Component{
               type="text"
               value={this.state.search}
               onChange={event => this.setState({search: event.target.value })} />
+      <label htmlFor="sort"> Sort by </label>
       <select
               name="sort"
               id="sort"
               className="form-control"
               value={this.state.sort}
               onChange={event => {
-                this.setState({sort: event.target.value})
-                this.sortItems();
+                this.setState({sort: event.target.value});
+                this.sortItems(event.target.value);
               }}>
-              <option value="ID">ID</option>
-              <option value="Name">Name</option>
-              <option value="Aisle">Aisle #</option>
-              <option value="Stock">Stock</option>
-              <option value="Food-Group">Food Group</option>
-              <option value="Cost">Cost</option>
-              <option value="Rating">Rating</option>
+              <option value="id">ID</option>
+              <option value="name">Name</option>
+              <option value="aisle">Aisle #</option>
+              <option value="stock">Stock</option>
+              <option value="category">Food Group</option>
+              <option value="price">Cost</option>
+              <option value="rating">Rating</option>
           </select>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -87,7 +89,7 @@ export class SearchView extends React.Component{
                   <td> {x.name} </td>
                   <td> {x.aisle} </td>
                   <td> {x.stock} </td>
-                  <td> {x.grouping} </td>
+                  <td> {x.category} </td>
                   <td> ${x.price} </td>
                   <td> {x.rating} </td>
                 </tr>
