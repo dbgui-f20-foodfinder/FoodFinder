@@ -156,6 +156,31 @@ app.get('/products/compare_qty', async (req, res) => {
   });
 });
 
+// update items' price in the store
+// 7.1
+app.put('/products/set_price', async (req, res) => {
+  var productID = req.param('productID');
+  var price = req.param('price');
+
+  connection.query('UPDATE products SET pricePerItem = ? WHERE productID = ?', [price, productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// update update items' quality in the store
+// 7.2
+app.put('/products/set_qty', async (req, res) => {
+  var productID = req.param('productID');
+  var qty = req.param('qty');
+
+  connection.query('UPDATE products SET qty = ? WHERE productID = ?', [qty, productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
 // -------------------------------------------------------------------------------------
 //                              LOCATIONS (AISLES) TABLE
 // -------------------------------------------------------------------------------------
