@@ -18,8 +18,11 @@ export class MapView extends React.Component{
             new Food(0, "Apple", 1, 10, "Fruit", "Yummy", "1.99", "https://www.applesfromny.com/wp-content/uploads/2020/05/Jonagold_NYAS-Apples2.png", 4.5, false, true),
               
         ],
-        test: this.foodRepository.getFoods(),
   };
+
+  componentWillMount(){
+    let test = this.foodRepository.getFoods();
+  }
 
   addItemToCart(item){
     var c = this.state.cart;
