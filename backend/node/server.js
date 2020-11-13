@@ -265,6 +265,29 @@ app.get('/login', function (req, res) {
   });
 });
 
+// 5.1
+app.get('/instorecredit', function (req, res) {
+  var userID = req.param('userID');
+
+  connection.query("SELECT inStoreCredit FROM user WHERE userID = ?", userID, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
+// 5.4
+// giving in store credit to a customer
+app.put('/give/instorecredit', async (req, res) => {
+  var userID = req.param('userID');
+  var credit = req.param('credit');
+
+  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ? WHERE userID = ?', [credit, userID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 
 // -------------------------------------------------------------------------------------
 //                                        OTHER
