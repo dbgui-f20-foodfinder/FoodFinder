@@ -94,6 +94,7 @@ app.get('/products/popular', function (req, res) {
   });
 });
 
+// Set the stock of a particular item in the store
 app.put('/products/update/stock', async (req, res) => {
   var productID = req.param('productID');
   var stock = req.param('stock');
@@ -111,6 +112,25 @@ app.put('/products/update/location', async (req, res) => {
 
   connection.query('UPDATE products SET locationID = ? WHERE productID = ?', [locationID, productID], function (err, result, fields) {
     if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// changes the aisle location of a product to 0 (i.e. off the shelves)
+app.put('/products/update/remove_location', async (req, res) => {
+  var productID = req.param('productID');
+
+  connection.query('UPDATE products SET locationID = 0 WHERE productID = ?', productID, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Gets all locations that do not have products (locationID = 0)
+// NOT TESTED YET
+app.get('/products/location/empty', function (req, res) {
+  connection.query("SELECT * from locations l LEFT OUTER JOIN productLocations pl ON l.locationID = pl.locationID WHERE pl.productID IS NULL;", function (err, result, fields) {
+    if (err) throw error;
     res.end(JSON.stringify(result));
   });
 });
@@ -167,14 +187,6 @@ app.get('/locations', function (req, res) {
   });
 });
 
-// 
-app.get('/locations/empty', function (req, res) {
-  connection.query("SELECT * FROM locations WHERE ", function (err, result, fields) {
-    if (err) throw error;
-    res.end(JSON.stringify(result));
-  });
-});
-
 // /locations
 // Selects all empty locations. Returns data from all locations without any products
 app.get('/locations/empty', function (req, res) {
@@ -183,6 +195,16 @@ app.get('/locations/empty', function (req, res) {
     res.end(JSON.stringify(result));
   });
 });
+
+// Selects the aisle numbers and the corresponding categories for each aisle (User story 1.5)
+// NOT TESTED
+app.get('/locations/empty', function (req, res) {
+  connection.query("SELECT l.aisleNum, p.category from products p INNER JOIN productLocations pl ON p.productID = pl.productID INNER JOIN locations l ON l.locationID = pl.locationID GROUP BY l.aisleNum;", function (err, result, fields) {
+    if (err) throw error;
+    res.end(JSON.stringify(result));
+  });
+});
+
 
 // -------------------------------------------------------------------------------------
 //                                        USERS
