@@ -176,6 +176,31 @@ app.get('/products/compare_qty', async (req, res) => {
   });
 });
 
+// update items' price in the store
+// 7.1
+app.put('/products/set_price', async (req, res) => {
+  var productID = req.param('productID');
+  var price = req.param('price');
+
+  connection.query('UPDATE products SET pricePerItem = ? WHERE productID = ?', [price, productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// update update items' quality in the store
+// 7.2
+app.put('/products/set_qty', async (req, res) => {
+  var productID = req.param('productID');
+  var qty = req.param('qty');
+
+  connection.query('UPDATE products SET qty = ? WHERE productID = ?', [qty, productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
 // -------------------------------------------------------------------------------------
 //                              LOCATIONS (AISLES) TABLE
 // -------------------------------------------------------------------------------------
@@ -259,6 +284,29 @@ app.get('/login', function (req, res) {
     else  {
       res.end(JSON.stringify(1));
     }
+  });
+});
+
+// 5.1
+app.get('/instorecredit', function (req, res) {
+  var userID = req.param('userID');
+
+  connection.query("SELECT inStoreCredit FROM user WHERE userID = ?", userID, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
+// 5.4
+// giving in store credit to a customer
+app.put('/give/instorecredit', async (req, res) => {
+  var userID = req.param('userID');
+  var credit = req.param('credit');
+
+  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ? WHERE userID = ?', [credit, userID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
   });
 });
 

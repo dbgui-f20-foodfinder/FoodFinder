@@ -3,8 +3,11 @@ import { Food } from '../models/food';
 import SearchView from './searchView.jsx';
 import CartView from './cartView.jsx';
 import ItemView from './itemView';
+import FoodRepository from '../api/FoodsRepository.js'
 
 export class MapView extends React.Component{
+  foodRepository = new FoodRepository();
+
   state = { 
         search: "",
         foods: [new Food(0, "Banana", 5, 30, "Fruit", "Super Yummy", ".99", "https://www.kroger.com/product/images/xlarge/front/0000000004011", 5, true, false),
@@ -14,8 +17,12 @@ export class MapView extends React.Component{
         cart: [new Food(1, "Banana", 5, 30, "Fruit", "Super Yummy", ".99", "https://www.kroger.com/product/images/xlarge/front/0000000004011", 5, true, false),
             new Food(0, "Apple", 1, 10, "Fruit", "Yummy", "1.99", "https://www.applesfromny.com/wp-content/uploads/2020/05/Jonagold_NYAS-Apples2.png", 4.5, false, true),
               
-        ]
+        ],
   };
+
+  componentWillMount(){
+    let test = this.foodRepository.getFoods();
+  }
 
   addItemToCart(item){
     var c = this.state.cart;
