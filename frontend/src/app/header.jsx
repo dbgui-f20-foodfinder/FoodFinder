@@ -4,6 +4,7 @@ import SearchView from './searchView.jsx';
 import CartView from './cartView.jsx';
 import ItemView from './itemView';
 import FoodRepository from '../api/FoodsRepository.js'
+import MapView from './mapView';
 
 export class Header extends React.Component{
     foodRepository = new FoodRepository();
@@ -59,7 +60,9 @@ export class Header extends React.Component{
           </div>
       </nav>
   
+        <MapView> </MapView>
         <SearchView> </SearchView>
+        
         {/* <CartView cart={this.state.cart}> </CartView> */}
         {/* {console.log(this.state.foods)} */}
         {/* <ItemView addToCart={item => this.addItemToCart(item)} item={this.state.foods[1]}></ItemView> */}
