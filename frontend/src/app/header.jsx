@@ -60,8 +60,9 @@ export class Header extends React.Component{
       </nav>
   
         <SearchView> </SearchView>
-        {/* <CartView cart={this.state.cart}> </CartView>
-        <ItemView addToCart={item => this.addItemToCart(item)} item={this.state.foods[2]}></ItemView> */}
+        {/* <CartView cart={this.state.cart}> </CartView> */}
+        {/* {console.log(this.state.foods)} */}
+        {/* <ItemView addToCart={item => this.addItemToCart(item)} item={this.state.foods[1]}></ItemView> */}
       </>
     }
 };

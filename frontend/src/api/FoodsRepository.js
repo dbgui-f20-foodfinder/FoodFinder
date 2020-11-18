@@ -17,6 +17,20 @@ export class FoodsRepository {
         });
     }
 
+    getFood(id) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/products/${id}`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
     // getFood(id) {
     //     return new Promise((resolve, reject) => {
     //         axios.get(`${this.url}/${id}`)

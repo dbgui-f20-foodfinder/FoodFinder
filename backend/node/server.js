@@ -58,6 +58,16 @@ app.get('/products', function (req, res) {
   });
 });
 
+// We tried our best... you can fix what we have done
+// This Route is used to retrieve the one product from the table
+// app.get('/products/:productID', function (req, res) {
+//   connection.query(`SELECT * FROM products WHERE productID = '${req.query.productID}'`),
+//   function (err, result, fields) {
+//     if (err) throw err;
+//     res.end(JSON.stringify(result)); // Result in JSON format
+//   });
+// });
+
 // Displays items sorted by expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",

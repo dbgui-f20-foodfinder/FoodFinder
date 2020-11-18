@@ -16,9 +16,13 @@ export class ItemView extends React.Component{
     }
   }
 
+  componentDidMount(){
+    console.log(this.props)
+  }
+
     render(){
       return <div className="container bg-light">
-        <h1> Item View </h1>
+        {/* <h1> Item View </h1>
       <div className="d-inline-flex p-2">
         <img className="img-thumbnail img-fluid w-50 h-50 p-3" alt="Current Product" src={this.props.item.imageURL}></img>
         <div className="">
@@ -37,7 +41,7 @@ export class ItemView extends React.Component{
             onClick={ () => this.onAddToCart() }> Add to Cart </button>
           </form>
         </div>
-      </div>
+      </div> */}
     </div>
     }
   
