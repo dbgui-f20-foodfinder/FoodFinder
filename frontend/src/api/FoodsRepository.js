@@ -19,7 +19,7 @@ export class FoodsRepository {
 
     getFood(id) {
         return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/products/${id}`)
+            axios.get(`${this.url}/product/get?productID=${id}`)
             .then(x => {
                 resolve(x.data);
             }
@@ -29,6 +29,10 @@ export class FoodsRepository {
                 reject();
             });
         });
+    }
+
+    addToCart(){
+
     }
 
     // getFood(id) {
