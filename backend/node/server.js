@@ -58,6 +58,16 @@ app.get('/products', function (req, res) {
   });
 });
 
+
+app.get('/product/get', async (req, res) => {
+  var productID = req.param('productID');
+
+  connection.query('SELECT * FROM products WHERE productID = ?', [productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 // We tried our best... you can fix what we have done
 // This Route is used to retrieve the one product from the table
 // app.get('/products/:productID', function (req, res) {
