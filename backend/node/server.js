@@ -59,6 +59,8 @@ app.get('/products', function (req, res) {
 });
 
 
+
+
 app.get('/product/get', async (req, res) => {
   var productID = req.param('productID');
 

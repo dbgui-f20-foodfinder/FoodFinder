@@ -1,6 +1,7 @@
 import React from 'react';
 import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
+import { Link } from 'react-router-dom'
 
 export class SearchView extends React.Component{
   foodRepository = new FoodRepository();
@@ -55,8 +56,7 @@ export class SearchView extends React.Component{
 
   render(){
     return <div className="container bg-light">
-      <h1> Search View</h1>
-      <label htmlFor="searchBar"> Search For Food </label>
+      <label htmlFor="searchBar"> Search</label>
       <input name="searchBar"
               id="searchBar"
               className="form-control"
@@ -99,7 +99,7 @@ export class SearchView extends React.Component{
               if(x.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ""){
                 return <tr  key={x.id}>
                   <td> {x.id} </td>
-                  <td> {x.name} </td>
+                  <td> <Link className="text-decoration-underline" to={'foods/' + x.id}> <u>{x.name}</u> </Link></td>
                   <td> {x.aisle} </td>
                   <td> {x.stock} </td>
                   <td> {x.category} </td>

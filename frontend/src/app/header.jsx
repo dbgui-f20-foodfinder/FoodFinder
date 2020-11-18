@@ -27,7 +27,7 @@ export class Header extends React.Component{
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav">
-              <Link className="nav-item nav-link active" to="/search">Search for Item <span className="sr-only"></span></Link>
+              <Link className="nav-item nav-link active" to="/search">Search <span className="sr-only"></span></Link>
               <Link className="nav-item nav-link active" to="/cart">Cart</Link>
               <Link className="nav-item nav-link active" to="/login">Sign Out</Link>
               </div>

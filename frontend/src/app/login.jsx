@@ -4,6 +4,7 @@ import FoodRepository from '../api/FoodsRepository.js'
 export class Login extends React.Component{
     foodRepository = new FoodRepository();
   
+    // save user info in session storage (similar to cart)
     render(){
       return <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">

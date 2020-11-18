@@ -12,7 +12,7 @@ export class ItemView extends React.Component{
 
   onAddToCart() {
     this.foodRepository.addToCart(this.state.food.id);
-    this.props.addToCart(this.state.item);
+    // this.props.addToCart(this.state.item);
   }
 
   booleanToString(input){
@@ -26,7 +26,8 @@ export class ItemView extends React.Component{
   }
 
   componentWillMount(){
-    this.foodRepository.getFood(this.props.itemID)
+    console.log(+this.props.match.params.foodID)
+    this.foodRepository.getFood(+this.props.match.params.foodID)
     .then(f => {
       this.setState({
         item: new Food(f[0].productID, f[0].name, f[0].price, f[0].numSearches, f[0].expirationDate, f[0].storeID, f[0].locationID, f[0].stock, 
@@ -37,7 +38,6 @@ export class ItemView extends React.Component{
 
     render(){
       return <div className="container bg-light">
-        <h1> Item View </h1>
       <div className="d-inline-flex p-2">
         <img className="img-thumbnail img-fluid w-50 h-50 p-3" alt="Current Product" src={this.state.item.imageURL}></img>
         <div className="">
