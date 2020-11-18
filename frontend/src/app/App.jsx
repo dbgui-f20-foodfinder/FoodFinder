@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import MapView from './mapView';
+import Header from './header';
 
 function App() {
   return (
-    <MapView> </MapView>
+    <Header> </Header>
   )
 }
 
