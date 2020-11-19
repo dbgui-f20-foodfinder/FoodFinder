@@ -298,13 +298,13 @@ app.get('/login', function (req, res) {
   var username = req.param('username');
   var password = req.param('password');
 
-  connection.query("SELECT username FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
+  connection.query("SELECT accountTypeID FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
     if (err) {
       res.end("Incorrect username or password. Please try again!");
       throw err;
     } 
     else  {
-      res.end(JSON.stringify(1));
+      res.end(JSON.stringify(result));
     }
   });
 });
