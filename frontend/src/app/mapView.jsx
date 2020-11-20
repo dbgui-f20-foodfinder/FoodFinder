@@ -34,177 +34,325 @@ export class MapView extends React.Component{
         version="1.1"
         viewBox="0 0 320.399 257.451"
       >
-        <g
-          id="layer1"
-          fillOpacity="1"
-          fillRule="evenodd"
-          display="inline"
-          transform="translate(-14.717 -28.06)"
-        >
+        <defs id="defs777">
           <path
-            id="rect11"
-            fill="#55f"
-            strokeWidth="0.187"
-            d="M20.538 156.174H40.193V279.394H20.538z"
+            id="rect125"
+            d="M63.311 21.734H146.466V82.21000000000001H63.311z"
           ></path>
+          <path id="rect115" d="M32.128 13.229H148.356V81.265H32.128z"></path>
+        </defs>
+        <g id="layer3" fill="#b7bec8" strokeWidth="0.265" display="inline">
           <path
-            id="rect2"
-            fill="#55f"
-            strokeWidth="0.18"
-            d="M49.718 -147.178H69.373V-33.028999999999996H49.718z"
+            id="blu2"
+            d="M201.361 -119.44H315.51099999999997V-5.469999999999999H201.361z"
             transform="scale(1 -1)"
           ></path>
+          <path id="blu5" d="M201.361 146.606H315.632V252.564H201.361z"></path>
+          <path id="blu3" d="M4.763 129.171H53.598V252.392H4.763z"></path>
           <path
-            id="rect37"
-            fill="#5fd35f"
-            strokeWidth="0.187"
-            d="M49.718 -279.394H69.373V-156.174H49.718z"
-            transform="scale(1 -1)"
+            id="blu4"
+            d="M65.698 146.47H179.97V252.428H65.698z"
+            transform="rotate(-.1)"
           ></path>
           <path
-            id="rect12"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M173.385 -195.699H193.04V-81.55000000000001H173.385z"
-            transform="rotate(89.91)"
+            id="blu1"
+            d="M3.903 6.509H179.864V120.1H3.903z"
+            transform="rotate(-.3)"
           ></path>
+        </g>
+        <g id="layer4" display="inline">
           <path
-            id="rect14"
+            id="red1"
             fill="#55f"
-            strokeWidth="0.18"
-            d="M202.036 81.536H221.691V195.685H202.036z"
-            transform="scale(1 -1) rotate(-89.91)"
+            strokeDasharray="none"
+            strokeMiterlimit="4"
+            strokeWidth="0.265"
+            d="M10.861 -1.231H186.822V112.36H10.861z"
           ></path>
           <path
-            id="rect3"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M81.821 32.65H101.476V146.799H81.821z"
+            id="red2"
+            fill="#55f"
+            strokeWidth="0.265"
+            d="M207.988 -1.788H322.13800000000003V112.182H207.988z"
           ></path>
           <path
             id="rect4"
             fill="#55f"
-            strokeWidth="0.18"
-            d="M112.589 -146.8H132.244V-32.65100000000001H112.589z"
-            transform="scale(1 -1)"
+            strokeDasharray="none"
+            strokeMiterlimit="4"
+            strokeWidth="0.265"
+            d="M72.673 138.997H186.945V244.955H72.673z"
           ></path>
           <path
-            id="rect5"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M143.885 32.65H163.54V146.799H143.885z"
-          ></path>
-          <path
-            id="rect6"
+            id="red5"
             fill="#55f"
-            strokeWidth="0.18"
-            d="M176.315 -146.621H195.97V-32.47200000000001H176.315z"
-            transform="scale(1 -1)"
-          ></path>
-
-
-          <path
-            id="rect1"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M20.009 -147.179H39.664V-33.03H20.009z"
-            transform="scale(1 -1)"
-          ></path>
-          
-
-          {/* <button type="button" className="btn" data-container="body" data-toggle="modal">
-          Modal Test
-          </button>
-
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  *Put Aisle Preview Here*
-                </div>
-                <div class="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
-          <path
-            id="rect16"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M230.687 -195.671H250.342V-81.52199999999999H230.687z"
-            transform="rotate(89.91)"
+            strokeDasharray="none"
+            strokeMiterlimit="4"
+            strokeWidth="0.265"
+            d="M207.989 139.348H322.26V245.306H207.989z"
           ></path>
           <path
-            id="rect18"
+            id="rect90"
             fill="#55f"
-            strokeWidth="0.18"
-            d="M259.867 81.507H279.52200000000005V195.656H259.867z"
-            transform="scale(1 -1) rotate(-89.91)"
+            strokeDasharray="none"
+            strokeMiterlimit="4"
+            strokeWidth="0.265"
+            d="M11.39 121.913H60.225V245.13400000000001H11.39z"
           ></path>
-          <path
-            id="rect13"
-            fill="#55f"
-            strokeWidth="0.18"
-            d="M173.947 -331.014H193.602V-216.865H173.947z"
-            transform="rotate(89.91)"
-          ></path>
-          <path
-            id="rect15"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M202.598 216.85H222.25300000000001V330.999H202.598z"
-            transform="scale(1 -1) rotate(-89.91)"
-          ></path>
-          <path
-            id="rect17"
-            fill="#55f"
-            strokeWidth="0.18"
-            d="M231.249 -330.986H250.904V-216.837H231.249z"
-            transform="rotate(89.91)"
-          ></path>
-          <path
-            id="rect19"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M260.429 216.821H280.08399999999995V330.97H260.429z"
-            transform="scale(1 -1) rotate(-89.91)"
-          ></path>
-          <path
-            id="rect8"
-            fill="#55f"
-            strokeWidth="0.18"
-            d="M247.904 -146.62H267.55899999999997V-32.471000000000004H247.904z"
-            transform="scale(1 -1)"
-          ></path>
-          <path
-            id="rect9"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M280.26 32.471H299.91499999999996V146.62H280.26z"
-          ></path>
-          <path
-            id="rect10"
-            fill="#55f"
-            strokeWidth="0.18"
-            d="M311.631 -146.443H331.28599999999994V-32.29400000000001H311.631z"
-            transform="scale(1 -1)"
-          ></path>
-          <path
-            id="rect7"
-            fill="#5fd35f"
-            strokeWidth="0.18"
-            d="M217.136 -146.621H236.791V-32.47200000000001H217.136z"
-            transform="scale(1 -1)"
-          ></path>
+          <text
+            xmlSpace="preserve"
+            style={{
+              lineHeight: "1.25",
+              InkscapeFontSpecification: "'sans-serif, Bold'",
+              fontVariantLigatures: "normal",
+              fontVariantCaps: "normal",
+              fontVariantNumeric: "normal",
+              fontVariantEastAsian: "normal",
+            }}
+            id="text131"
+            x="100.371"
+            y="186.426"
+            fill="#cf0"
+            fillOpacity="1"
+            stroke="none"
+            strokeWidth="0.55"
+            fontFamily="sans-serif"
+            fontSize="22.005"
+            fontStretch="normal"
+            fontStyle="normal"
+            fontVariant="normal"
+            fontWeight="bold"
+            transform="scale(.9159 1.09183)"
+          >
+            <tspan
+              id="tspan129"
+              x="100.371"
+              y="186.426"
+              style={{
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              fill="#cf0"
+              strokeWidth="0.55"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+            >
+              Aisle 4{" "}
+            </tspan>
+          </text>
+          <text
+            xmlSpace="preserve"
+            style={{
+              lineHeight: "1.25",
+              InkscapeFontSpecification: "'sans-serif, Bold'",
+              fontVariantLigatures: "normal",
+              fontVariantCaps: "normal",
+              fontVariantNumeric: "normal",
+              fontVariantEastAsian: "normal",
+            }}
+            id="text131-3"
+            x="67.494"
+            y="60.871"
+            fill="#cf0"
+            fillOpacity="1"
+            stroke="none"
+            strokeWidth="0.55"
+            display="inline"
+            fontFamily="sans-serif"
+            fontSize="22.005"
+            fontStretch="normal"
+            fontStyle="normal"
+            fontVariant="normal"
+            fontWeight="bold"
+            transform="scale(.9159 1.09183)"
+          >
+            <tspan
+              id="tspan129-0"
+              x="67.494"
+              y="60.871"
+              style={{
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              fill="#cf0"
+              strokeWidth="0.55"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+            >
+              Aisle 1
+            </tspan>
+          </text>
+          <text
+            xmlSpace="preserve"
+            style={{
+              lineHeight: "1.25",
+              InkscapeFontSpecification: "'sans-serif, Bold'",
+              fontVariantLigatures: "normal",
+              fontVariantCaps: "normal",
+              fontVariantNumeric: "normal",
+              fontVariantEastAsian: "normal",
+            }}
+            id="text131-3-9"
+            x="248.283"
+            y="62.325"
+            fill="#cf0"
+            fillOpacity="1"
+            stroke="none"
+            strokeWidth="0.55"
+            display="inline"
+            fontFamily="sans-serif"
+            fontSize="22.005"
+            fontStretch="normal"
+            fontStyle="normal"
+            fontVariant="normal"
+            fontWeight="bold"
+            transform="scale(.9159 1.09183)"
+          >
+            <tspan
+              id="tspan129-0-1"
+              x="248.283"
+              y="62.325"
+              style={{
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              fill="#cf0"
+              strokeWidth="0.55"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+            >
+              Aisle 2
+            </tspan>
+          </text>
+          <text
+            xmlSpace="preserve"
+            style={{
+              lineHeight: "1.25",
+              InkscapeFontSpecification: "'sans-serif, Bold'",
+              fontVariantLigatures: "normal",
+              fontVariantCaps: "normal",
+              fontVariantNumeric: "normal",
+              fontVariantEastAsian: "normal",
+            }}
+            id="text131-3-9-0"
+            x="247.912"
+            y="186.26"
+            fill="#cf0"
+            fillOpacity="1"
+            stroke="none"
+            strokeWidth="0.55"
+            display="inline"
+            fontFamily="sans-serif"
+            fontSize="22.005"
+            fontStretch="normal"
+            fontStyle="normal"
+            fontVariant="normal"
+            fontWeight="bold"
+            transform="scale(.9159 1.09183)"
+          >
+            <tspan
+              id="tspan129-0-1-9"
+              x="247.912"
+              y="186.26"
+              style={{
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              fill="#cf0"
+              strokeWidth="0.55"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+            >
+              Aisle 5
+            </tspan>
+          </text>
+          <text
+            xmlSpace="preserve"
+            style={{
+              lineHeight: "1.25",
+              InkscapeFontSpecification: "'sans-serif, Bold'",
+              fontVariantLigatures: "normal",
+              fontVariantCaps: "normal",
+              fontVariantNumeric: "normal",
+              fontVariantEastAsian: "normal",
+            }}
+            id="text131-2"
+            x="-241.453"
+            y="40.544"
+            fill="#cf0"
+            fillOpacity="1"
+            stroke="none"
+            strokeWidth="0.55"
+            display="inline"
+            fontFamily="sans-serif"
+            fontSize="22.005"
+            fontStretch="normal"
+            fontStyle="normal"
+            fontVariant="normal"
+            fontWeight="bold"
+            transform="matrix(0 -.9159 1.09183 0 0 0)"
+          >
+            <tspan
+              id="tspan129-3"
+              x="-241.453"
+              y="40.544"
+              style={{
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              fill="#cf0"
+              strokeWidth="0.55"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+            >
+              Aisle 3
+            </tspan>
+          </text>
+          <text
+            xmlSpace="preserve"
+            style={{ lineHeight: "1.25" }}
+            id="text215"
+            x="156.86"
+            y="59.531"
+            strokeWidth="0.265"
+            fontFamily=".Al Bayan PUA"
+            fontSize="22.005"
+          ></text>
         </g>
       </svg>
     </div>
