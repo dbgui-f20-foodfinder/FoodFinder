@@ -128,7 +128,7 @@ app.put('/products/update/remove_location', async (req, res) => {
 
 // Gets all locations that do not have products (locationID = 0)
 // NOT TESTED YET
-app.get('/products/location/empty', function (req, res) {
+app.get('/products/location/empty_locs', function (req, res) {
   connection.query("SELECT * from locations l LEFT OUTER JOIN productLocations pl ON l.locationID = pl.locationID WHERE pl.productID IS NULL;", function (err, result, fields) {
     if (err) throw error;
     res.end(JSON.stringify(result));
@@ -136,7 +136,7 @@ app.get('/products/location/empty', function (req, res) {
 });
 
 // Gets all products that do not have a location (locationID = 0)
-app.get('/products/location/empty', function (req, res) {
+app.get('/products/location/empty_prods', function (req, res) {
   connection.query("SELECT * FROM products WHERE locationID = 0", function (err, result, fields) {
     if (err) throw error;
     res.end(JSON.stringify(result));
@@ -282,7 +282,7 @@ app.get('/login', function (req, res) {
       throw err;
     } 
     else  {
-      res.end(JSON.stringify(1));
+      res.end(JSON.stringify(result));
     }
   });
 });
