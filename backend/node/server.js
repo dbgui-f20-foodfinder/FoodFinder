@@ -93,7 +93,7 @@ app.get('/products/expirationDate', function (req, res) {
 // Displays fresh items only
 app.get('/products/fresh', function (req, res) {
   connection.query("SELECT * FROM products WHERE isFresh = 1", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
@@ -102,7 +102,7 @@ app.get('/products/fresh', function (req, res) {
 // Displays local items only
 app.get('/products/local', function (req, res) {
   connection.query("SELECT * FROM products WHERE isLocallyGrown = 1", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
@@ -111,7 +111,7 @@ app.get('/products/local', function (req, res) {
 // Displays items ordered by popularity (highest first)
 app.get('/products/popular', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY popularity DESC", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
@@ -152,7 +152,7 @@ app.put('/products/update/remove_location', async (req, res) => {
 // NOT TESTED YET
 app.get('/products/location/empty_locs', function (req, res) {
   connection.query("SELECT * from locations l LEFT OUTER JOIN productLocations pl ON l.locationID = pl.locationID WHERE pl.productID IS NULL;", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
@@ -160,7 +160,7 @@ app.get('/products/location/empty_locs', function (req, res) {
 // Gets all products that do not have a location (locationID = 0)
 app.get('/products/location/empty_prods', function (req, res) {
   connection.query("SELECT * FROM products WHERE locationID = 0", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
@@ -229,16 +229,43 @@ app.put('/products/set_qty', async (req, res) => {
 
 app.get('/locations', function (req, res) {
   connection.query("SELECT * FROM locations", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
+
+// ! - Please fix -- why is this not adding to the table?
+app.post('/newlocation', async (req, res) => {
+  var newLocation = {
+    locationName : req.param('locationName'),
+    isSpecial : req.param('isSpecial'), // isSpecial: 1 if it's a special location (Bathroom, Checkout, etc.), 0 otherwise
+    aisleNum : req.param('aisleNum') // aisleNum: This will be the number displayed on the map. Set this to 0 if it's a special location.
+  };
+
+  connection.query('INSERT INTO locations SET ?', newLocation, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// ! - INCOMPLETE
+// Remove a location from the table, along with all the productLocations that correspond to that location.
+app.delete('/removelocation', async (req, res) => {
+  var locToRemove = req.param('locationID')
+
+  connection.query('INSERT INTO locations SET ?', locToRemove, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
 
 // /locations
 // Selects all empty locations. Returns data from all locations without any products
 app.get('/locations/empty', function (req, res) {
   connection.query("SELECT * FROM locations l LEFT OUTER JOIN products p ON l.locationID = p.locationID WHERE p.productID IS NULL", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
@@ -247,7 +274,18 @@ app.get('/locations/empty', function (req, res) {
 // NOT TESTED
 app.get('/locations/empty', function (req, res) {
   connection.query("SELECT l.aisleNum, p.category from products p INNER JOIN productLocations pl ON p.productID = pl.productID INNER JOIN locations l ON l.locationID = pl.locationID GROUP BY l.aisleNum;", function (err, result, fields) {
-    if (err) throw error;
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Returns all products in the given aisle (location).
+// 1.6
+app.get('/locations/get_products', async (req, res) => {
+  var locationID = req.param('locationID');
+
+  connection.query('SELECT * FROM products WHERE productID = ?', [productID], function (err, result, fields) {
+    if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
