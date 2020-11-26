@@ -58,6 +58,28 @@ app.get('/products', function (req, res) {
   });
 });
 
+
+
+
+app.get('/product/get', async (req, res) => {
+  var productID = req.param('productID');
+
+  connection.query('SELECT * FROM products WHERE productID = ?', [productID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// We tried our best... you can fix what we have done
+// This Route is used to retrieve the one product from the table
+// app.get('/products/:productID', function (req, res) {
+//   connection.query(`SELECT * FROM products WHERE productID = '${req.query.productID}'`),
+//   function (err, result, fields) {
+//     if (err) throw err;
+//     res.end(JSON.stringify(result)); // Result in JSON format
+//   });
+// });
+
 // Displays items sorted by expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
@@ -276,7 +298,7 @@ app.get('/login', function (req, res) {
   var username = req.param('username');
   var password = req.param('password');
 
-  connection.query("SELECT username FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
+  connection.query("SELECT accountTypeID FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
     if (err) {
       res.end("Incorrect username or password. Please try again!");
       throw err;

@@ -1,10 +1,19 @@
 import React from 'react';
 import './App.css';
-import MapView from './mapView';
+import Header from './header';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ROUTES } from '../routes';
 
 function App() {
   return (
-    <MapView> </MapView>
+    <div className="">
+    <Router>
+    <Header></Header>
+      <Switch>
+        { ROUTES.map((route, index) => <Route key={ index } { ...route }></Route>) }
+      </Switch>
+    </Router>
+  </div>
   )
 }
 

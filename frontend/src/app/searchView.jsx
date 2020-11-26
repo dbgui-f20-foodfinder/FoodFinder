@@ -1,16 +1,31 @@
 import React from 'react';
 import { Food } from '../models/food';
-
+import FoodRepository from '../api/FoodsRepository.js'
+import { Link } from 'react-router-dom'
 
 export class SearchView extends React.Component{
+  foodRepository = new FoodRepository();
+
   state = { 
         search: "",
-        foods: this.props.foods,
+        foods: [],
         sort: "ID"
   }; 
 
   componentWillMount(){
-    this.sortItems("id");
+    this.foodRepository.getFoods()
+    .then(rez => {
+      let foods = [];
+      rez.map((f) => {
+          let curFood = new Food(f.productID, f.name, f.price, f.numSearches, f.expirationDate, f.storeID, f.locationID, f.stock, f.category, f.isFresh, 
+            f.isLocallyGrown, f.rating, f.imageURL, f.productDesc);
+          foods.push(curFood);
+      });
+      this.setState({
+        foods: foods
+      });
+      this.sortItems("id");
+    });
   }
 
   sortItems(field){
@@ -38,12 +53,10 @@ export class SearchView extends React.Component{
         break;
     }
   }
-  
 
   render(){
     return <div className="container bg-light">
-      <h1> Search View</h1>
-      <label htmlFor="searchBar"> Search For Food </label>
+      <label htmlFor="searchBar"> Search</label>
       <input name="searchBar"
               id="searchBar"
               className="form-control"
@@ -82,11 +95,11 @@ export class SearchView extends React.Component{
         </thead>
         <tbody>
           {
-            this.props.foods.map(x => {
+            this.state.foods.length != 0 && this.state.foods.map(x => {
               if(x.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ""){
                 return <tr  key={x.id}>
                   <td> {x.id} </td>
-                  <td> {x.name} </td>
+                  <td> <Link className="text-decoration-underline" to={'foods/' + x.id}> <u>{x.name}</u> </Link></td>
                   <td> {x.aisle} </td>
                   <td> {x.stock} </td>
                   <td> {x.category} </td>
