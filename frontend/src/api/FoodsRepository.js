@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class FoodsRepository {
-    url = 'ec2-3-137-163-61.us-east-2.compute.amazonaws.com';
+    url = 'http://3.137.163.61:3001';
 
     getFoods() {
         return new Promise((resolve, reject) => {
