@@ -80,6 +80,29 @@ app.get('/product/get', async (req, res) => {
 //   });
 // });
 
+// ! - NOT TESTED
+// Add a new product to the products table.
+app.post('/newproduct', async (req, res) => {
+  var newProduct = {
+    name : req.param('name'),
+    price : req.param('price'),
+    numSearches : req.param('numSearches'),
+    expirationDate : req.param('expirationDate'),
+    storeID : req.param('storeID'),
+    locationID : req.param('locationID'),
+    stock : req.param('stock'),
+    category : req.param('category'),
+    isFresh : req.param('isFresh'),
+    isLocallyGrown : req.param('isLocally'),
+    rating : req.param('rating'),
+  };
+
+  connection.query('INSERT INTO products SET ?', newProduct, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 // Displays items sorted by expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
@@ -250,13 +273,13 @@ app.post('/newlocation', async (req, res) => {
   });
 });
 
-// ! - INCOMPLETE
+// ! - NOT TESTED
 // Remove a location from the table, along with all the productLocations that correspond to that location.
 // 10.2
 app.delete('/removelocation', async (req, res) => {
   var locToRemove = req.param('locationID')
 
-  connection.query('INSERT INTO locations SET ?', locToRemove, function (err, result, fields) {
+  connection.query('DELETE FROM locations WHERE locationID = ?', locToRemove, function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
@@ -273,8 +296,8 @@ app.get('/locations/empty', function (req, res) {
   });
 });
 
+// ! - NOT TESTED
 // Selects the aisle numbers and the corresponding categories for each aisle (User story 1.5)
-// NOT TESTED
 app.get('/locations/empty', function (req, res) {
   connection.query("SELECT l.aisleNum, p.category from products p INNER JOIN productLocations pl ON p.productID = pl.productID INNER JOIN locations l ON l.locationID = pl.locationID GROUP BY l.aisleNum;", function (err, result, fields) {
     if (err) throw err;
@@ -339,7 +362,7 @@ app.get('/login', function (req, res) {
   var username = req.param('username');
   var password = req.param('password');
 
-  connection.query("SELECT accountTypeID FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
+  connection.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
     if (err) {
       res.end("Incorrect username or password. Please try again!");
       throw err;
