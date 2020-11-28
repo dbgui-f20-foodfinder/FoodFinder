@@ -1,6 +1,7 @@
 import React from 'react';
 import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
+import Header from './header';
 
 export class MapView extends React.Component{
   foodRepository = new FoodRepository();
@@ -25,7 +26,9 @@ export class MapView extends React.Component{
   }
 
   render() { 
-  return <div className="d-flex justify-content-center">
+  return <>
+  <Header></Header>
+  <div className="d-flex justify-content-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         id="svg783"
@@ -356,6 +359,7 @@ export class MapView extends React.Component{
         </g>
       </svg>
     </div>
+    </>
     }
 };
   

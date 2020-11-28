@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './header';
 
 export class CartView extends React.Component{
     state = {
@@ -31,7 +32,9 @@ export class CartView extends React.Component{
     }
 
     render(){
-      return <div className="container bg-light">
+      return <>
+      <Header></Header>
+      <div className="container bg-light">
         <h1> Cart View</h1>
         { this.state.cart.map(x => {
             return <div key={x.id} className="container bg-light">
@@ -49,6 +52,7 @@ export class CartView extends React.Component{
         <button type="button" className="btn btn-primary"> Search More Items</button>
         <h2> {this.state.price} </h2>
       </div>
+      </>
     }
   
   };

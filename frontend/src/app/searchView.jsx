@@ -2,6 +2,7 @@ import React from 'react';
 import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
 import { Link } from 'react-router-dom'
+import Header from './header';
 
 export class SearchView extends React.Component{
   foodRepository = new FoodRepository();
@@ -55,7 +56,9 @@ export class SearchView extends React.Component{
   }
 
   render(){
-    return <div className="container bg-light">
+    return <>
+    <Header></Header>
+    <div className="container bg-light">
       <label htmlFor="searchBar"> Search</label>
       <input name="searchBar"
               id="searchBar"
@@ -113,6 +116,7 @@ export class SearchView extends React.Component{
         </tbody>
       </table>
     </div>
+    </>
   }
 
 };

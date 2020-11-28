@@ -350,6 +350,7 @@ app.get('/login', function (req, res) {
   });
 });
 
+
 // 5.1
 app.get('/instorecredit', function (req, res) {
   var userID = req.param('userID');

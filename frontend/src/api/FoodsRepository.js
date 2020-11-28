@@ -31,8 +31,18 @@ export class FoodsRepository {
         });
     }
 
-    addToCart(){
-
+    validateLogin(userName, password){
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/login?username=${userName}&password=${password}`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
     }
 
     // getFood(id) {

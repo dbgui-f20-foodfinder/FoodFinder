@@ -9,5 +9,6 @@ export const ROUTES = [
     { path: '/cart', component: CartView },
     { path: '/foods/:foodID', component: ItemView },
     { path: '/search', component: SearchView },
-    { path: '/', component: MapView },
+    { path: '/map', component: MapView },
+    { path: '/', component: Login },
 ]
