@@ -274,7 +274,6 @@ app.post('/newlocation', async (req, res) => {
   });
 });
 
-// ! - NOT TESTED
 // Remove a location from the table, along with all the productLocations that correspond to that location.
 // 10.2
 app.delete('/removelocation', async (req, res) => {
