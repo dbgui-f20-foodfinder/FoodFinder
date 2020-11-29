@@ -357,6 +357,7 @@ app.post('/newemployee', async (req, res) => {
   });
 });
 
+
 // how a user logins
 app.get('/login', function (req, res) {
   var username = req.param('username');

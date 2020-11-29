@@ -3,6 +3,8 @@ import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
 import Header from './header';
 import CartService from '../services/cartService'
+import { Link } from 'react-router-dom'
+
 
 export class ItemView extends React.Component{
   foodRepository = new FoodRepository();
@@ -10,12 +12,23 @@ export class ItemView extends React.Component{
 
   state = {
     item: new Food(),
+    alerts: []
   }
 
   onAddToCart() {
     this.cartService.addToCart(this.state.item);
-    //this.foodRepository.addToCart(this.state.food.id);
-    // this.props.addToCart(this.state.item);
+
+    var newAlerts = this.state.alerts;
+    newAlerts.push(0);
+    this.setState({
+      alerts: newAlerts
+    })
+    setTimeout(()=>{
+      newAlerts.pop();
+      this.setState({
+        alerts: newAlerts
+      })
+    }, 2000);
   }
 
   booleanToString(input){
@@ -38,10 +51,29 @@ export class ItemView extends React.Component{
     });
   }
 
+  renderAlerts(){
+    return <div className="float-right">
+      { this.state.alerts.map((x,i) =>{
+          return <div key={i} className="alert alert-success alert-dismissible fade show" role="alert">
+            Item added to cart!
+        </div>
+      })
+      }
+    </div>
+  }
+
+  showEditButton(){
+    if(sessionStorage.getItem("userCode") == 2){
+      return <Link className="btn btn-warning" to={this.state.item.id + '/edit'}> Edit </Link>  
+    }
+  }
+
     render(){
       return <>
       <Header></Header>
+      { this.renderAlerts()}
       <div className="container bg-light">
+      {this.showEditButton()}
       <div className="d-inline-flex p-2">
         <img className="img-thumbnail img-fluid w-50 h-50 p-3" alt="Current Product" src={this.state.item.imageURL}></img>
         <div className="">

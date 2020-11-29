@@ -11,19 +11,18 @@ export class Login extends React.Component{
       errorMessage: "",
     }
 
-    componentWillMount(){
-      localStorage.setItem("userCode", 0);
-    }
+    // componentWillMount(){
+    //   localStorage.setItem("userCode", 0);
+    // }
 
     checkLogIn(){
-      console.log(this.state.userName, this.state.password);
       this.foodRepository.validateLogin(this.state.userName, this.state.password)
       .then(rez => {
         if(rez.length == 0){
           alert("Not a valid username or password. Please try again.");
         }
         else{
-          localStorage.setItem("userCode", JSON.stringify(rez[0].accountTypeID));
+          sessionStorage.setItem("userCode", JSON.stringify(rez[0].accountTypeID));
           this.props.history.push("/map");
         }
       });

@@ -14,6 +14,7 @@ export class CartView extends React.Component{
     var cart = this.cartService.getCart();
     this.setState({cart: cart});
   }
+  
 
     render(){
       return <>
