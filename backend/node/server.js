@@ -93,12 +93,14 @@ app.post('/newproduct', async (req, res) => {
     stock : req.param('stock'),
     category : req.param('category'),
     isFresh : req.param('isFresh'),
-    isLocallyGrown : req.param('isLocally'),
-    rating : req.param('rating')
+    isLocallyGrown : req.param('isLocallyGrown'),
+    rating : req.param('rating'),
+    imageURL : req.param("imageURL"),
+    productDesc : req.param("productDesc")
   };
 
   connection.query('INSERT INTO products SET ?', newProduct, function (err, result, fields) {
-    if (err) throw err;
+    //if (err) throw err;
     res.end(JSON.stringify(result));
   });
 });
