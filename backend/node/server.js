@@ -151,6 +151,8 @@ app.put('/products/update/stock', async (req, res) => {
   });
 });
 
+// TODO: Change to productName and locationName
+// TODO: Take the DB off of Safe Update Mode.
 // changes the aisle location of a product
 app.put('/products/update/location', async (req, res) => {
   var productID = req.param('productID');
@@ -257,7 +259,6 @@ app.get('/locations', function (req, res) {
   });
 });
 
-// ! - Please fix -- why is this not adding to the table?
 // Add a new location to the locations table.
 // 10.2
 app.post('/newlocation', async (req, res) => {
