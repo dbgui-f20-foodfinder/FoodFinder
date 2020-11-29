@@ -2,15 +2,18 @@ import React from 'react';
 import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
 import Header from './header';
+import CartService from '../services/cartService'
 
 export class ItemView extends React.Component{
   foodRepository = new FoodRepository();
+  cartService = new CartService();
 
   state = {
     item: new Food(),
   }
 
   onAddToCart() {
+    this.cartService.addToCart(this.state.item);
     //this.foodRepository.addToCart(this.state.food.id);
     // this.props.addToCart(this.state.item);
   }
