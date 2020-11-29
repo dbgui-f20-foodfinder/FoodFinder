@@ -94,7 +94,7 @@ app.post('/newproduct', async (req, res) => {
     category : req.param('category'),
     isFresh : req.param('isFresh'),
     isLocallyGrown : req.param('isLocally'),
-    rating : req.param('rating'),
+    rating : req.param('rating')
   };
 
   connection.query('INSERT INTO products SET ?', newProduct, function (err, result, fields) {
@@ -172,7 +172,7 @@ app.put('/products/update/remove_location', async (req, res) => {
 });
 
 // Gets all locations that do not have products (locationID = 0)
-// NOT TESTED YET
+// ! - NOT TESTED
 app.get('/products/location/empty_locs', function (req, res) {
   connection.query("SELECT * from locations l LEFT OUTER JOIN productLocations pl ON l.locationID = pl.locationID WHERE pl.productID IS NULL;", function (err, result, fields) {
     if (err) throw err;
