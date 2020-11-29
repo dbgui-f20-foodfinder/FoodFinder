@@ -1,7 +1,7 @@
 import React from 'react';
 import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
-
+import Header from './header';
 
 export class ItemView extends React.Component{
   foodRepository = new FoodRepository();
@@ -11,7 +11,7 @@ export class ItemView extends React.Component{
   }
 
   onAddToCart() {
-    this.foodRepository.addToCart(this.state.food.id);
+    //this.foodRepository.addToCart(this.state.food.id);
     // this.props.addToCart(this.state.item);
   }
 
@@ -26,7 +26,6 @@ export class ItemView extends React.Component{
   }
 
   componentWillMount(){
-    console.log(+this.props.match.params.foodID)
     this.foodRepository.getFood(+this.props.match.params.foodID)
     .then(f => {
       this.setState({
@@ -37,7 +36,9 @@ export class ItemView extends React.Component{
   }
 
     render(){
-      return <div className="container bg-light">
+      return <>
+      <Header></Header>
+      <div className="container bg-light">
       <div className="d-inline-flex p-2">
         <img className="img-thumbnail img-fluid w-50 h-50 p-3" alt="Current Product" src={this.state.item.imageURL}></img>
         <div className="">
@@ -51,6 +52,9 @@ export class ItemView extends React.Component{
           <h4> Fresh: {this.booleanToString(this.state.item.isFresh)} </h4>
           <form>
             <button type="button" className="btn btn-secondary" 
+            onClick={() =>{
+              this.props.history.goBack();
+            }}
               > Back </button>
             <button type="button" className="btn btn-primary"
             onClick={ () => this.onAddToCart() }> Add to Cart </button>
@@ -58,6 +62,7 @@ export class ItemView extends React.Component{
         </div>
       </div>
     </div>
+    </>
     }
   
   };
