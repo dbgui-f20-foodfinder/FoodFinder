@@ -2,6 +2,8 @@ import React from 'react';
 import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
 import Header from './header';
+import { Link } from 'react-router-dom'
+
 
 export class MapView extends React.Component{
   foodRepository = new FoodRepository();
@@ -22,6 +24,7 @@ export class MapView extends React.Component{
       this.setState({
         foods: foods
       })
+      console.log(foods);
     });
   }
 
@@ -30,7 +33,7 @@ export class MapView extends React.Component{
   <Header></Header>
 
   {/* Aisle 1 Preview */}
-  <div className="modal fade" id="aisle1Prev" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal fade" id="aisle1Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -51,9 +54,11 @@ export class MapView extends React.Component{
         </thead>
           <tbody>
             { this.state.foods.map((x,i) => {
-                if(x.locationID == 1) {
+                if(x.aisle == 1) {
                   return <tr key={i}>
-                    <td>{x.name}</td>
+                    <td><Link className="text-decoration-underline text-primary" 
+                    onClick={()=> this.props.history.push('foods/' + x.id)}
+                    data-dismiss="modal"> <u>{x.name}</u> </Link></td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
                 }
@@ -72,7 +77,7 @@ export class MapView extends React.Component{
   </div>
 
   {/* Aisle 2 Preview */}
-  <div className="modal fade" id="aisle2Prev" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal fade" id="aisle2Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -93,7 +98,7 @@ export class MapView extends React.Component{
   </div>
 
   {/* Aisle 3 Preview */}
-  <div className="modal fade" id="aisle3Prev" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal fade" id="aisle3Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -114,7 +119,7 @@ export class MapView extends React.Component{
   </div>
 
   {/* Aisle 4 Preview */}
-  <div className="modal fade" id="aisle4Prev" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal fade" id="aisle4Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -135,7 +140,7 @@ export class MapView extends React.Component{
   </div>
 
   {/* Aisle 5 Preview */}
-  <div className="modal fade" id="aisle5Prev" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal fade" id="aisle5Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
