@@ -383,6 +383,16 @@ app.post('/newemployee', async (req, res) => {
   });
 });
 
+// given a username, return the userID (This can be used to fetch other userInfo).
+app.get('/userinfo', function (req, res) {
+  var username = req.param('username');
+
+  connection.query("SELECT userID FROM user WHERE username = ?", username, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 
 // how a user logins
 app.get('/login', function (req, res) {
