@@ -59,8 +59,6 @@ app.get('/products', function (req, res) {
 });
 
 
-
-
 app.get('/product/get', async (req, res) => {
   var productID = req.param('productID');
 
@@ -70,15 +68,17 @@ app.get('/product/get', async (req, res) => {
   });
 });
 
-// We tried our best... you can fix what we have done
-// This Route is used to retrieve the one product from the table
-// app.get('/products/:productID', function (req, res) {
-//   connection.query(`SELECT * FROM products WHERE productID = '${req.query.productID}'`),
-//   function (err, result, fields) {
-//     if (err) throw err;
-//     res.end(JSON.stringify(result)); // Result in JSON format
-//   });
-// });
+
+// Delete a product
+app.delete('/deleteproduct', async (req, res) => {
+  var productID = req.param('productID')
+
+  connection.query('DELETE FROM products WHERE productID = ?', productID, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 
 // Add a new product to the products table.
 app.post('/newproduct', async (req, res) => {
