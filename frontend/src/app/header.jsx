@@ -1,10 +1,11 @@
 import React from 'react';
-import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
 import { Link } from 'react-router-dom'
+import {CartService} from '../services/cartService'
 
 export class Header extends React.Component{
     foodRepository = new FoodRepository();
+    cartService = new CartService();
   
     addItemToCart(item){
       var c = this.state.cart;
@@ -23,7 +24,7 @@ export class Header extends React.Component{
               <div className="navbar-nav">
               <Link className="nav-item nav-link active" to="/search" onClick={() => localStorage.setItem("userCode", 0)}>Search<span className="sr-only"></span></Link>
               <Link className="nav-item nav-link active" to="/cart">Cart</Link>
-              <Link className="nav-item nav-link active" to="/login">Sign Out</Link>
+              <Link className="nav-item nav-link active" onClick={()=>{ this.cartService.cleartCart() }}to="/login">Sign Out</Link>
               </div>
           </div>
       </nav>

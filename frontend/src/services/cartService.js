@@ -26,6 +26,10 @@ export class CartService {
         // window.cart = cart;
     }
 
+    cleartCart(){
+        localStorage.setItem("cart", JSON.stringify(new Cart()));
+    }
+
     setCart(cart){
         localStorage.setItem("cart", JSON.stringify(cart));
     }

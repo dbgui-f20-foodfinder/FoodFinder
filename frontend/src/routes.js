@@ -4,11 +4,13 @@ import { ItemView } from "./app/itemView";
 import { CartView } from "./app/cartView";
 import { Login } from "./app/login";
 import { ItemEditView } from "./app/itemEditView"
+import { NewItemView } from "./app/newItemView"
 
 export const ROUTES = [
     { path: '/login', component: Login },
     { path: '/cart', component: CartView },    
     { path: '/foods/:foodID/edit', component: ItemEditView },
+    { path: '/foods/newItem', component: NewItemView },
     { path: '/foods/:foodID', component: ItemView },
     { path: '/search', component: SearchView },
     { path: '/map', component: MapView },

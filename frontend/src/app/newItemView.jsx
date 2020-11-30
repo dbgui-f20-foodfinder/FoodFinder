@@ -4,8 +4,7 @@ import FoodRepository from '../api/FoodsRepository.js'
 import Header from './header';
 import { Link } from 'react-router-dom'
 
-
-export class ItemEditView extends React.Component{
+export class NewItemView extends React.Component{
   foodRepository = new FoodRepository();
 
   state = {
@@ -29,51 +28,21 @@ export class ItemEditView extends React.Component{
     var state = this.state;
     var item = new Food(state.id, state.name, state.price, state.numSearches, state.exprDate, state.storeID, state.location, state.stock,
         state.category, state.isFresh, state.locallyGrown, state.rating, state.imageURL, state.desc);
-    this.foodRepository.updateFood(state.id, item);
+    this.foodRepository.createFood(item);
     this.props.history.goBack();
-
   }
-
-  deleteItem(){
-    var rez = window.confirm('Are you sure you wish to delete this item?')
-    console.log(rez)
-    if(rez){
-        this.foodRepository.deleteFood(this.state.id);
-        setTimeout(()=>this.props.history.push("/search"), 200);
-        ;
-    }
-  }
-
-  componentWillMount(){
-    this.foodRepository.getFood(+this.props.match.params.foodID)
-    .then(f => {
-      this.setState({
-        id: f[0].productID, 
-        name: f[0].name, 
-        price: f[0].price,
-        numSearches: f[0].numSearches,
-        exprDate: f[0].expirationDate, 
-        storeID: f[0].storeID, 
-        location: f[0].locationID, 
-        stock:f[0].stock, 
-        category: f[0].category,
-        isFresh: f[0].isFresh, 
-        locallyGrown: f[0].isLocallyGrown,
-        rating:  f[0].rating, 
-        imageURL: f[0].imageURL, 
-        desc: f[0].productDesc
-      });
-    });
-  }
-
     render(){
       return <>
       <Header></Header>
       <div className="container bg-light">
-      <button type="button" className="btn btn-danger float-right"
-            onClick={ () => this.deleteItem() }> Delete Item </button>
       <div className="d-inline-flex p-2">
-        <img className="img-thumbnail img-fluid w-50 h-50 p-3" alt="Current Product" src={this.state.imageURL}></img>
+      <label htmlFor="imageURL"> Image URL</label>
+        <input name="imageURL"
+                id="imageURL"
+                className="form-control"
+                type="text"
+                value={this.state.imageURL}
+                onChange={event => this.setState({imageURL: event.target.value })} />
         <div className="">
         <label htmlFor="name"> Name</label>
         <input name="name"
@@ -140,7 +109,7 @@ export class ItemEditView extends React.Component{
             }}
               > Cancel </button>
             <button type="button" className="btn btn-primary"
-            onClick={ () => this.saveChanges() }> <Link className="" to={'foods/' + this.state.id}> </Link> Save </button>
+            onClick={ () => this.saveChanges() }> Save </button>
           </form>
     </div>
     </>
@@ -148,4 +117,4 @@ export class ItemEditView extends React.Component{
   
   };
     
-  export default ItemEditView;
+  export default NewItemView;

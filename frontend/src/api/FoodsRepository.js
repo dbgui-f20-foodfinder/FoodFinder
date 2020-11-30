@@ -41,7 +41,7 @@ export class FoodsRepository {
             });
         });
     }
-    createFood(food) {
+    updateFood(food) {
         return new Promise((resolve, reject) => {
             axios.put(`${this.url}/createproduct`, food)
             .then(x => resolve(x.data))
@@ -51,9 +51,12 @@ export class FoodsRepository {
             });
         });
     }
-    updateFood(id, food) {
+    createFood(food) {
         return new Promise((resolve, reject) => {
-            axios.put(`${this.url}/${id}`, food)
+            console.log(food)
+            axios.put(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
+                &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh}&
+                isLocallyGrown=+${food.isLocallyGrown}&rating=+0&imageURL=${food.imageURL}&productDesc=${food.description}`)
             .then(x => resolve(x.data))
             .catch(e => {
                 alert(e);
