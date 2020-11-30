@@ -18,8 +18,8 @@ export class ItemEditView extends React.Component{
     location: '',
     stock: '',
     category: '',
-    isFresh: '',
-    locallyGrown: '',
+    isFresh: false,
+    locallyGrown: false,
     rating:  '',
     imageURL: '',
     desc: '',
@@ -29,14 +29,14 @@ export class ItemEditView extends React.Component{
     var state = this.state;
     var item = new Food(state.id, state.name, state.price, state.numSearches, state.exprDate, state.storeID, state.location, state.stock,
         state.category, state.isFresh, state.locallyGrown, state.rating, state.imageURL, state.desc);
-    this.foodRepository.updateFood(state.id, item);
-    this.props.history.goBack();
-
+    this.foodRepository.updateFood(item);
+    setTimeout(()=>{
+      this.props.history.goBack();
+    }, 200)
   }
 
   deleteItem(){
     var rez = window.confirm('Are you sure you wish to delete this item?')
-    console.log(rez)
     if(rez){
         this.foodRepository.deleteFood(this.state.id);
         setTimeout(()=>this.props.history.push("/search"), 200);
@@ -123,14 +123,16 @@ export class ItemEditView extends React.Component{
                 className="form-control"
                 type="checkbox"
                 checked={this.state.locallyGrown}
-                onChange={event => this.setState({locallyGrown: event.target.checked })} />
+                onChange={event => this.setState({locallyGrown: event.target.checked })} 
+                />
         <label htmlFor="isFresh"> Fresh</label>
         <input name="isFresh"
                 id="isFresh"
                 className="form-control"
                 type="checkbox"
                 checked={this.state.isFresh}
-                onChange={event => this.setState({isFresh: event.target.checked })} />
+                onChange={event => this.setState({isFresh: event.target.checked })} 
+                />
         </div>
       </div>
       <form>
