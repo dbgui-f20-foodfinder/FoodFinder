@@ -104,6 +104,32 @@ app.post('/newproduct', async (req, res) => {
   });
 });
 
+// ! - NOT TESTED
+// Add a new product to the products table.
+app.put('/editproduct', async (req, res) => {
+  var productID = req.param('id');
+  var editedProduct = {
+    name : req.param('name'),
+    price : req.param('price'),
+    numSearches : req.param('numSearches'),
+    expirationDate : req.param('expirationDate'),
+    storeID : req.param('storeID'),
+    locationID : req.param('locationID'),
+    stock : req.param('stock'),
+    category : req.param('category'),
+    isFresh : req.param('isFresh'),
+    isLocallyGrown : req.param('isLocallyGrown'),
+    rating : req.param('rating'),
+    imageURL : req.param("imageURL"),
+    productDesc : req.param("productDesc")
+  };
+
+  connection.query('UPDATE products SET ? WHERE productID = ?', [editedProduct,productID], function (err, result, fields) {
+    //if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 // Displays items sorted by expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
