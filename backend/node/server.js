@@ -107,7 +107,7 @@ app.post('/newproduct', async (req, res) => {
 // ! - NOT TESTED
 // Add a new product to the products table.
 app.put('/editproduct', async (req, res) => {
-  var productID = req.param('id');
+  var productID = req.param('productID');
   var editedProduct = {
     name : req.param('name'),
     price : req.param('price'),
@@ -202,7 +202,7 @@ app.put('/products/update/remove_location', async (req, res) => {
 
 // Gets all locations that do not have products (locationID = 0)
 app.get('/products/location/empty_locs', function (req, res) {
-  connection.query("SELECT l.locationID, locationName, isSpecial, aisleNum from locations l LEFT OUTER JOIN products p ON l.locationID = p.locationID WHERE p.locationID IS NULL", function (err, result, fields) {
+  connection.query("SELECT l.locationID, locationName, isSpecial from locations l LEFT OUTER JOIN products p ON l.locationID = p.locationID WHERE p.locationID IS NULL", function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
