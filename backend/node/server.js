@@ -412,10 +412,10 @@ app.get('/login', function (req, res) {
 
 
 // 5.1
-app.get('/instorecredit', function (req, res) {
+app.get('/profileInfo', function (req, res) {
   var userID = req.param('userID');
 
-  connection.query("SELECT inStoreCredit FROM user WHERE userID = ?", userID, function (err, result, fields) {
+  connection.query("SELECT firstName, lastName, inStoreCredit FROM user WHERE userID = ?", userID, function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
