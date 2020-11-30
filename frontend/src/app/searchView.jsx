@@ -59,62 +59,67 @@ export class SearchView extends React.Component{
     return <>
     <Header></Header>
     <div className="container bg-light">
-      <label htmlFor="searchBar"> Search</label>
-      <input name="searchBar"
-              id="searchBar"
-              className="form-control"
-              type="text"
-              value={this.state.search}
-              onChange={event => this.setState({search: event.target.value })} />
-      <label htmlFor="sort"> Sort by </label>
-      <select
-              name="sort"
-              id="sort"
-              className="form-control"
-              value={this.state.sort}
-              onChange={event => {
-                this.setState({sort: event.target.value});
-                this.sortItems(event.target.value);
-              }}>
-              <option value="id">ID</option>
-              <option value="name">Name</option>
-              <option value="aisle">Aisle #</option>
-              <option value="stock">Stock</option>
-              <option value="category">Food Group</option>
-              <option value="price">Cost</option>
-              <option value="rating">Rating</option>
-          </select>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Aisle #</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Food Group</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            this.state.foods.length != 0 && this.state.foods.map(x => {
-              if(x.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ""){
-                return <tr  key={x.id}>
-                  <td> {x.id} </td>
-                  <td> <Link className="text-decoration-underline" to={'foods/' + x.id}> <u>{x.name}</u> </Link></td>
-                  <td> {x.aisle} </td>
-                  <td> {x.stock} </td>
-                  <td> {x.category} </td>
-                  <td> ${x.price} </td>
-                  <td> {x.rating} </td>
-                </tr>
-              }
-              return null;
-            })
-          }
-        </tbody>
-      </table>
+      <form className="pt-1">
+          <Link className="btn btn-warning float-right" to={'foods/newItem'}>New Item  </Link> 
+      </form>
+        <form className="clearfix pt-3">
+        <label htmlFor="searchBar"> Search</label>
+        <input name="searchBar"
+                id="searchBar"
+                className="form-control"
+                type="text"
+                value={this.state.search}
+                onChange={event => this.setState({search: event.target.value })} />
+        <label htmlFor="sort"> Sort by </label>
+        <select
+                name="sort"
+                id="sort"
+                className="form-control"
+                value={this.state.sort}
+                onChange={event => {
+                  this.setState({sort: event.target.value});
+                  this.sortItems(event.target.value);
+                }}>
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+                <option value="aisle">Aisle #</option>
+                <option value="stock">Stock</option>
+                <option value="category">Food Group</option>
+                <option value="price">Cost</option>
+                <option value="rating">Rating</option>
+            </select>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Aisle #</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Food Group</th>
+              <th scope="col">Cost</th>
+              <th scope="col">Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.state.foods.length != 0 && this.state.foods.map(x => {
+                if(x.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ""){
+                  return <tr  key={x.id}>
+                    <td> {x.id} </td>
+                    <td> <Link className="text-decoration-underline" to={'foods/' + x.id}> <u>{x.name}</u> </Link></td>
+                    <td> {x.aisle} </td>
+                    <td> {x.stock} </td>
+                    <td> {x.category} </td>
+                    <td> ${x.price} </td>
+                    <td> {x.rating} </td>
+                  </tr>
+                }
+                return null;
+              })
+            }
+          </tbody>
+        </table>
+        </form>
     </div>
     </>
   }
