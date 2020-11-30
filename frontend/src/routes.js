@@ -5,9 +5,11 @@ import { CartView } from "./app/cartView";
 import { Login } from "./app/login";
 import { ItemEditView } from "./app/itemEditView"
 import { NewItemView } from "./app/newItemView"
+import { Profile } from "./app/profile"
 
 export const ROUTES = [
     { path: '/login', component: Login },
+    { path: '/myProfile', component: Profile },
     { path: '/cart', component: CartView },    
     { path: '/foods/:foodID/edit', component: ItemEditView },
     { path: '/foods/newItem', component: NewItemView },

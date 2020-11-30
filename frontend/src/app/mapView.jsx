@@ -24,7 +24,6 @@ export class MapView extends React.Component{
       this.setState({
         foods: foods
       })
-      console.log(foods);
     });
   }
 

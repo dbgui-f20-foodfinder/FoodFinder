@@ -26,7 +26,7 @@ export class CartService {
         // window.cart = cart;
     }
 
-    cleartCart(){
+    clearCart(){
         localStorage.setItem("cart", JSON.stringify(new Cart()));
     }
 

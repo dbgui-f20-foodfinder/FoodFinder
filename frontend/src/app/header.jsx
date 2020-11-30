@@ -24,7 +24,8 @@ export class Header extends React.Component{
               <div className="navbar-nav">
               <Link className="nav-item nav-link active" to="/search" onClick={() => localStorage.setItem("userCode", 0)}>Search<span className="sr-only"></span></Link>
               <Link className="nav-item nav-link active" to="/cart">Cart</Link>
-              <Link className="nav-item nav-link active" onClick={()=>{ this.cartService.cleartCart() }}to="/login">Sign Out</Link>
+              <Link className="nav-item nav-link active" to="/myProfile">Profile</Link>
+              <Link className="nav-item nav-link active" onClick={()=>{ this.cartService.clearCart() }}to="/login">Sign Out</Link>
               </div>
           </div>
       </nav>

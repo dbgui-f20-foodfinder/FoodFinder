@@ -16,12 +16,17 @@ export class Login extends React.Component{
     // }
 
     checkLogIn(){
-      this.foodRepository.validateLogin(this.state.userName, this.state.password)
+      var userName= this.state.userName;
+      this.foodRepository.validateLogin(userName, this.state.password)
       .then(rez => {
         if(rez.length == 0){
           alert("Not a valid username or password. Please try again.");
         }
         else{
+          this.foodRepository.getUserID(userName)
+          .then(rez => {
+            sessionStorage.setItem("userID", JSON.stringify(rez[0].userID));
+          });
           sessionStorage.setItem("userCode", JSON.stringify(rez[0].accountTypeID));
           this.props.history.push("/map");
         }
