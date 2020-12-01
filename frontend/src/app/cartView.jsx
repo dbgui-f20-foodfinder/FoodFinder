@@ -20,7 +20,8 @@ export class CartView extends React.Component{
       return <>
       <Header></Header>
       <div className="container bg-light">
-      <table className="table table-responsive">
+      <div className="table-responsive">
+      <table className="table">
       <thead>
         <tr>
           <th scope="col">Qty</th>
@@ -67,6 +68,7 @@ export class CartView extends React.Component{
           </tr>
       </tbody>
     </table>
+    </div>
     </div>
       </>
     }
