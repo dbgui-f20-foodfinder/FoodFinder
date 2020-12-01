@@ -345,37 +345,19 @@ app.get('/locations/get_products', async (req, res) => {
 //                                        USERS
 // -------------------------------------------------------------------------------------
 
-app.post('/newcustomer', async (req, res) => {
-  var newCustomer = {
+app.post('/newaccount', async (req, res) => {
+  var newAccount = {
     username : req.param('username'),
     password : req.param('password'),
     firstName : req.param('firstName'),
     lastName : req.param('lastName'),
     inStoreCredit : 0,
-    userLocLong : req.param('userLocLong'),
-    userLocLat : req.param('userLocLat'),
-    accountTypeID : 1
+    userLocLong : 0,
+    userLocLat : 0,
+    accountTypeID : req.param('accountTypeID')
   };
 
-  connection.query('INSERT INTO user SET ?', newCustomer, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
-
-app.post('/newemployee', async (req, res) => {
-  var newEmployee = {
-    username : req.param('username'),
-    password : req.param('password'),
-    firstName : req.param('firstName'),
-    lastName : req.param('lastName'),
-    inStoreCredit : 0,
-    userLocLong : req.param('userLocLong'),
-    userLocLat : req.param('userLocLat'),
-    accountTypeID : 2
-  };
-
-  connection.query('INSERT INTO user SET ?', newEmployee, function (err, result, fields) {
+  connection.query('INSERT INTO user SET ?', newAccount, function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
