@@ -323,7 +323,7 @@ app.get('/locations/empty', function (req, res) {
 // ! - NOT TESTED
 // Selects the aisle numbers and the corresponding categories for each aisle (User story 1.5)
 app.get('/locations/empty', function (req, res) {
-  connection.query("SELECT l.aisleNum, p.category from products p INNER JOIN productLocations pl ON p.productID = pl.productID INNER JOIN locations l ON l.locationID = pl.locationID GROUP BY l.aisleNum;", function (err, result, fields) {
+  connection.query("SELECT l.aisleNum, p.category from products p INNER JOIN productLocations pl ON p.productID = pl.productID INNER JOIN locations l ON l.locationID = pl.locationID GROUP BY l.aisleNum", function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
@@ -352,8 +352,6 @@ app.post('/newaccount', async (req, res) => {
     firstName : req.param('firstName'),
     lastName : req.param('lastName'),
     inStoreCredit : 0,
-    userLocLong : 0,
-    userLocLat : 0,
     accountTypeID : req.param('accountTypeID')
   };
 
@@ -414,6 +412,53 @@ app.put('/give/instorecredit', async (req, res) => {
   });
 });
 
+// ! - NONE OF THESE HAVE BEEN TESTED YET
+// -------------------------------------------------------------------------------------
+//                                    NOTIFICATIONS
+// -------------------------------------------------------------------------------------
+
+// Retrieve all notifications with notification category included
+app.get('/notifications', function (req, res) {
+
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID", userID, function (err, result, fields) {
+    if (err) {
+      res.end("Incorrect username or password. Please try again!");
+      throw err;
+    } 
+    else  {
+      res.end(JSON.stringify(result));
+    }
+  });
+});
+
+// Recieve all notifications for a given user
+app.get('/notifications/user', function (req, res) {
+  var userID = req.param('userID');
+
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = ?", userID, function (err, result, fields) {
+    if (err) {
+      res.end("Incorrect username or password. Please try again!");
+      throw err;
+    } 
+    else  {
+      res.end(JSON.stringify(result));
+    }
+  });
+});
+
+// ! - NOT TESTED
+app.post('/newnotification', async (req, res) => {
+  var newNotification = {
+    username : req.param('username'),
+    notifCategoryID : req.param('notifCategoryID'),
+    notifText : req.param('notifText')
+  };
+
+  connection.query('INSERT INTO notifications SET ?', newNotification, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
 
 // -------------------------------------------------------------------------------------
 //                                        OTHER
