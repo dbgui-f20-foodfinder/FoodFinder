@@ -177,14 +177,13 @@ app.put('/products/update/stock', async (req, res) => {
   });
 });
 
-// TODO: Change to productName and locationName
-// TODO: Take the DB off of Safe Update Mode.
-// changes the aisle location of a product
+// TODO: Should we change locationID to locationName?
+// Changes the aisle location of a product named productName
 app.put('/products/update/location', async (req, res) => {
-  var productID = req.param('productID');
+  var productName = req.param('productName');
   var locationID = req.param('locationID');
 
-  connection.query('UPDATE products SET locationID = ? WHERE productID = ?', [locationID, productID], function (err, result, fields) {
+  connection.query('UPDATE products SET locationID = ? WHERE productName = ?', [locationID, productName], function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
