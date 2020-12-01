@@ -75,7 +75,7 @@ export class ItemEditView extends React.Component{
             onClick={ () => this.deleteItem() }> Delete Item </button>
       <div className="d-inline-flex p-2">
         <div className="w-50 pr-5">
-          <img className="img-thumbnail img-fluid w-100 h-50 p-3" alt="Current Product" src={this.state.imageURL}></img>
+        <img className="img-thumbnail img img-responsive full-width p-3" alt="Current Product" src={this.state.imageURL}></img>
           <br></br>
           <label htmlFor="imageURL" className="pt-1"> Image URL</label>
           <input name="imageURL"

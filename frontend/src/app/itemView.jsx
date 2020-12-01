@@ -70,24 +70,29 @@ export class ItemView extends React.Component{
     render(){
       return <>
       <Header></Header>
-      { this.renderAlerts()}
+      <div className="">{ this.renderAlerts()}</div>
       <div className="container bg-light">
       {this.showEditButton()}
       <div className="d-inline-flex p-2">
         <div className="w-50 pr-5">
-          <img className="img-thumbnail img-fluid w-100 h-75 p-3" alt="Current Product" src={this.state.item.imageURL}></img>
+          <img className="img-thumbnail img img-responsive full-width p-3" alt="Current Product" src={this.state.item.imageURL}></img>
         </div>
         <div className="w-50 pr-5">
           <h1> {this.state.item.name} </h1>
           <h3><span className="badge text-white bg-primary">${this.state.item.price}</span></h3>
           <p className="description"> {this.state.item.description} </p>
-          <h4> Food Group: {this.state.item.category} </h4>
-          <h4> Aisle {this.state.item.aisle} </h4>
-          <h4> Stock in Store: {this.state.item.stock} </h4>
-          <h4> Locally Grown: {this.booleanToString(this.state.item.isLocallyGrown)} </h4>
-          <h4> Fresh: {this.booleanToString(this.state.item.isFresh)} </h4>
-          <form className="mt-3">
-            <button type="button" className="btn btn-secondary " 
+          <br></br>
+          <h3 className="pb-2"> <u> Item Info </u> </h3>
+          <h5> Food Group: <span className="text-secondary"> {this.state.item.category} </span></h5>
+          <h5> Aisle: <span className="text-secondary"> {this.state.item.aisle} </span></h5>
+          <h5> Stock in Store: <span className="text-secondary"> {this.state.item.stock} </span></h5>
+          <h5> Locally Grown: <span className="text-secondary"> {this.booleanToString(this.state.item.isLocallyGrown)} </span></h5>
+          <h5> Fresh: <span className="text-secondary"> {this.booleanToString(this.state.item.isFresh)} </span></h5>
+          
+        </div>
+      </div>
+      <form className="pb-3">
+            <button type="button" className="btn btn-secondary ml-1" 
             onClick={() =>{
               this.props.history.goBack();
             }}
@@ -95,8 +100,6 @@ export class ItemView extends React.Component{
             <button type="button" className="btn btn-primary ml-2"
             onClick={ () => this.onAddToCart() }> Add to Cart </button>
           </form>
-        </div>
-      </div>
     </div>
     </>
     }

@@ -44,11 +44,11 @@ export class Login extends React.Component{
     render(){
       return <>
       
-      <div className="container bg-light w-25 justify-content-center pb-3 pt-2">
+      <div className="container bg-light w-50 pb-3 pt-2">
         <label htmlFor="userName" > Username</label>
         <input name="userName"
                 id="userName"
-                className="form-control "
+                className="form-control"
                 type="text"
                 value={this.state.userName}
                 onChange={event => this.setState({userName: event.target.value })} />
@@ -59,6 +59,13 @@ export class Login extends React.Component{
               type="text"
               value={this.state.password}
               onChange={event => this.setState({password: event.target.value })} />
+              <Link 
+          type="button" 
+          className="text-decoration-underline float-right pt-2" 
+          to="createAccount"
+          >
+            Create Account
+          </Link>
         <button 
           type="button" 
           className="btn btn-primary mt-3" 
@@ -72,13 +79,8 @@ export class Login extends React.Component{
           }>
             Login
           </button>
-          <Link 
-          type="button" 
-          className="text-decoration-underline float-right pt-4" 
-          to="createAccount"
-          >
-            Create Account
-          </Link>
+
+          
 
     </div>
     </>

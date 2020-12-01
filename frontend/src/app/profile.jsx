@@ -31,9 +31,11 @@ export class Profile extends React.Component{
         <Header></Header>
        <div className="container bg-light">
             <h1> Account Info</h1>
-           <h2> First Name: {this.state.first} </h2>
-           <h2> Last Name: {this.state.last} </h2>
-           <h2> Account Credit: {this.state.accountCredit} </h2>
+           <h4> First Name: {this.state.first} </h4>
+           <h4> Last Name: {this.state.last} </h4>
+           <h4> Account Credit: {this.state.accountCredit} </h4>
+           <p className="text-secondary"> * To spend your instore credits, just show us your profile page at checkout! It's that simple!</p>
+           <p className="text-secondary">  To gain more in store credits, be sure to visit our kiosk when you're shopping! We're always happy to give our loyal customers a good deal every once in a while! *</p>
             <form>
             <Link className="nav-item nav-link active btn btn-primary" onClick={()=>{ this.cartService.clearCart() }}to="/login">Sign Out</Link>
           </form>

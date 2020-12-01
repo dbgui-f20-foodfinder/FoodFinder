@@ -24,7 +24,7 @@ export class CreateAccount extends React.Component{
     render(){
       return <>
       
-      <div className="container bg-light w-25 justify-content-center pb-3 pt-2">
+      <div className="container bg-light w-50 justify-content-center pb-3 pt-2">
       <label htmlFor="first" > First Name</label>
         <input name="first"
                 id="first"
@@ -74,7 +74,7 @@ export class CreateAccount extends React.Component{
           }}
           to="login"
           >
-            Create Account
+            Create
           </Link>
 
     </div>

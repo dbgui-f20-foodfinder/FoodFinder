@@ -40,7 +40,7 @@ export class NewItemView extends React.Component{
         <div className="container bg-light pt-3 w-100">
         <div className="d-inline-flex p-2 w-100">
           <div className="w-50 pr-5">
-            <img className="img-thumbnail img-fluid w-100 h-75 p-3" alt="Current Product" src={this.state.imageURL}></img>
+          <img className="img-thumbnail img img-responsive full-width p-3" alt="Current Product" src={this.state.imageURL}></img>
             <br></br>
             <label htmlFor="imageURL" className="pt-1"> Image URL</label>
             <input name="imageURL"
