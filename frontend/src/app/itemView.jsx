@@ -32,10 +32,13 @@ export class ItemView extends React.Component{
   }
 
   booleanToString(input){
+
     if(input){
+      console.log(input, "YES")
       return "Yes";
     }
     else{
+      console.log(input, "NO")
 
       return "No";
     }

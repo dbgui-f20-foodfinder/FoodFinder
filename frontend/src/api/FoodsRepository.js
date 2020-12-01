@@ -30,8 +30,13 @@ export class FoodsRepository {
     }
 
     updateFood(food) {
+        console.log(food)
+        console.log (food.isFresh ? 1 : 0)
+        console.log (food.isLocallyGrown ? 1 : 0)
         return new Promise((resolve, reject) => {
-            axios.put(`${this.url}/createproduct`, food)
+            axios.put(`${this.url}/editproduct?productID=+${food.id}&name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
+                &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}&
+                isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+0&imageURL=${food.imageURL}&productDesc=${food.description}`)
             .then(x => resolve(x.data))
             .catch(e => {
                 alert(e);
@@ -40,12 +45,11 @@ export class FoodsRepository {
         });
     }
     createFood(food) {
+        console.log(food)
         return new Promise((resolve, reject) => {
-            console.log(food)
-            // axios.put(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
-            //     &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh}&
-            //     isLocallyGrown=+${food.isLocallyGrown}&rating=+0&imageURL=${food.imageURL}&productDesc=${food.description}`)
-            axios.put(`${this.url}/newproduct?name=Apple&price=2.02&numSearches=0&expirationDate=2020-02-16&storeID=1&locationID=3&stock=300&category=2&isFresh=1&isLocallyGrown=1&rating=3&imageURL=https://en.wikipedia.org/wiki/Carrot%23/media/File:Vegetable-Carrot-Bundle-wStalks.jpg&productDesc=Good`)
+            axios.post(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
+                &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}&
+                isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+0&imageURL=${food.imageURL}&productDesc=${food.description}`)
             .then(x => resolve(x.data))
             .catch(e => {
                 alert(e);

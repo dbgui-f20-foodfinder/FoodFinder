@@ -17,8 +17,8 @@ export class NewItemView extends React.Component{
     location: '',
     stock: '',
     category: '',
-    isFresh: '',
-    locallyGrown: '',
+    isFresh: false,
+    locallyGrown: false,
     rating:  '',
     imageURL: '',
     desc: '',
@@ -29,8 +29,11 @@ export class NewItemView extends React.Component{
     var item = new Food(state.id, state.name, state.price, state.numSearches, state.exprDate, state.storeID, state.location, state.stock,
         state.category, state.isFresh, state.locallyGrown, state.rating, state.imageURL, state.desc);
     this.foodRepository.createFood(item);
-    this.props.history.goBack();
+    setTimeout(()=>{
+        this.props.history.goBack();
+      }, 200)
   }
+  
     render(){
       return <>
       <Header></Header>
