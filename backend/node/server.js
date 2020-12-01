@@ -323,7 +323,7 @@ app.get('/locations/empty', function (req, res) {
 // ! - NOT TESTED
 // Selects the aisle numbers and the corresponding categories for each aisle (User story 1.5)
 app.get('/locations/empty', function (req, res) {
-  connection.query("SELECT l.aisleNum, p.category from products p INNER JOIN productLocations pl ON p.productID = pl.productID INNER JOIN locations l ON l.locationID = pl.locationID GROUP BY l.aisleNum;", function (err, result, fields) {
+  connection.query("SELECT l.aisleNum, p.category from products p INNER JOIN productLocations pl ON p.productID = pl.productID INNER JOIN locations l ON l.locationID = pl.locationID GROUP BY l.aisleNum", function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
@@ -352,8 +352,6 @@ app.post('/newaccount', async (req, res) => {
     firstName : req.param('firstName'),
     lastName : req.param('lastName'),
     inStoreCredit : 0,
-    userLocLong : 0,
-    userLocLat : 0,
     accountTypeID : req.param('accountTypeID')
   };
 
