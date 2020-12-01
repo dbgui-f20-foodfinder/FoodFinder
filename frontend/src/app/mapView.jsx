@@ -558,6 +558,84 @@ export class MapView extends React.Component{
         </svg>
       </div>
     </div>
+    <div className="row">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="svg1549"
+        width="1199.4"
+        height="281.475"
+        version="1.1"
+        viewBox="0 0 317.341 74.474"
+      >
+        <g id="layer1" transform="translate(36.206 -54.99)">
+          <path
+            id="grey0"
+            fill="#b7bec8"
+            strokeWidth="0.348"
+            d="M-36.206 62.247H274.548V129.463H-36.206z"
+            display="inline"
+          ></path>
+          <path
+            id="blu0"
+            fill="#55f"
+            strokeDasharray="none"
+            strokeMiterlimit="4"
+            strokeWidth="0.346"
+            d="M-29.579 54.989H281.135V121.25999999999999H-29.579z"
+            display="inline"
+          ></path>
+          <text
+            xmlSpace="preserve"
+            style={{
+              lineHeight: "1.25",
+              InkscapeFontSpecification: "'sans-serif, Bold'",
+              fontVariantLigatures: "normal",
+              fontVariantCaps: "normal",
+              fontVariantNumeric: "normal",
+              fontVariantEastAsian: "normal",
+            }}
+            id="text131-3-8-4"
+            x="72.585"
+            y="88.885"
+            fill="#cf0"
+            fillOpacity="1"
+            stroke="none"
+            strokeWidth="0.55"
+            display="inline"
+            fontFamily="sans-serif"
+            fontSize="22.005"
+            fontStretch="normal"
+            fontStyle="normal"
+            fontVariant="normal"
+            fontWeight="bold"
+            transform="scale(.9159 1.09183)"
+          >
+            <tspan
+              id="tspan129-0-3-0"
+              x="72.585"
+              y="88.885"
+              style={{
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              fill="#cf0"
+              strokeWidth="0.55"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+            >
+              Unstocked
+            </tspan>
+          </text>
+        </g>
+      </svg>
+    </div>
   </div>
   </div>
   </>

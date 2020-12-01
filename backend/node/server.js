@@ -104,8 +104,7 @@ app.post('/newproduct', async (req, res) => {
   });
 });
 
-// ! - NOT TESTED
-// Add a new product to the products table.
+// Edit an existing product in the products table.
 app.put('/editproduct', async (req, res) => {
   var productID = req.param('productID');
   var editedProduct = {
