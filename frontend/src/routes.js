@@ -6,9 +6,11 @@ import { Login } from "./app/login";
 import { ItemEditView } from "./app/itemEditView"
 import { NewItemView } from "./app/newItemView"
 import { Profile } from "./app/profile"
+import { CreateAccount } from "./app/createAccount.jsx"
 
 export const ROUTES = [
     { path: '/login', component: Login },
+    { path: '/createAccount', component: CreateAccount },
     { path: '/myProfile', component: Profile },
     { path: '/cart', component: CartView },    
     { path: '/foods/:foodID/edit', component: ItemEditView },

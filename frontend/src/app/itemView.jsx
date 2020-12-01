@@ -32,14 +32,10 @@ export class ItemView extends React.Component{
   }
 
   booleanToString(input){
-
     if(input){
-      console.log(input, "YES")
       return "Yes";
     }
     else{
-      console.log(input, "NO")
-
       return "No";
     }
   }
@@ -67,7 +63,7 @@ export class ItemView extends React.Component{
 
   showEditButton(){
     if(sessionStorage.getItem("userCode") == 2){
-      return <Link className="btn btn-warning" to={this.state.item.id + '/edit'}> Edit </Link>  
+      return <Link className="btn btn-warning float-right mt-2" to={this.state.item.id + '/edit'}> Edit </Link>  
     }
   }
 
@@ -78,8 +74,10 @@ export class ItemView extends React.Component{
       <div className="container bg-light">
       {this.showEditButton()}
       <div className="d-inline-flex p-2">
-        <img className="img-thumbnail img-fluid w-50 h-50 p-3" alt="Current Product" src={this.state.item.imageURL}></img>
-        <div className="">
+        <div className="w-50 pr-5">
+          <img className="img-thumbnail img-fluid w-100 h-75 p-3" alt="Current Product" src={this.state.item.imageURL}></img>
+        </div>
+        <div className="w-50 pr-5">
           <h1> {this.state.item.name} </h1>
           <h3><span className="badge text-white bg-primary">${this.state.item.price}</span></h3>
           <p className="description"> {this.state.item.description} </p>
@@ -88,13 +86,13 @@ export class ItemView extends React.Component{
           <h4> Stock in Store: {this.state.item.stock} </h4>
           <h4> Locally Grown: {this.booleanToString(this.state.item.isLocallyGrown)} </h4>
           <h4> Fresh: {this.booleanToString(this.state.item.isFresh)} </h4>
-          <form>
-            <button type="button" className="btn btn-secondary" 
+          <form className="mt-3">
+            <button type="button" className="btn btn-secondary " 
             onClick={() =>{
               this.props.history.goBack();
             }}
               > Back </button>
-            <button type="button" className="btn btn-primary"
+            <button type="button" className="btn btn-primary ml-2"
             onClick={ () => this.onAddToCart() }> Add to Cart </button>
           </form>
         </div>

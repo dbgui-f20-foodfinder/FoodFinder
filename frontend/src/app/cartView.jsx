@@ -20,7 +20,7 @@ export class CartView extends React.Component{
       return <>
       <Header></Header>
       <div className="container bg-light">
-      <table className="table">
+      <table className="table table-responsive">
       <thead>
         <tr>
           <th scope="col">Qty</th>

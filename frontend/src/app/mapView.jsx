@@ -30,6 +30,7 @@ export class MapView extends React.Component{
   render() { 
   return <>
   <Header></Header>
+  <div className="mt-2">
 
   {/* Aisle 1 Preview */}
   <div className="modal fade" id="aisle1Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -56,7 +57,8 @@ export class MapView extends React.Component{
                 if(x.aisle == 1) {
                   return <tr key={i}>
                     <td><Link className="text-decoration-underline text-primary" 
-                    onClick={()=> this.props.history.push('foods/' + x.id)}
+                    onClick={()=> {this.props.history.push('foods/' + x.id)}}
+                    to={'foods/' + x.id}
                     data-dismiss="modal"> <u>{x.name}</u> </Link></td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
@@ -634,6 +636,7 @@ export class MapView extends React.Component{
         </g>
       </svg>
     </div>
+  </div>
   </div>
   </>
 }
