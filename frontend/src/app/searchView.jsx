@@ -55,12 +55,18 @@ export class SearchView extends React.Component{
     }
   }
 
+  showAddButton(){
+    if(sessionStorage.getItem("userCode") == 2){
+      return <Link className="btn btn-warning float-right" to={'foods/newItem'}>New Item  </Link>  
+    }
+  }
+
   render(){
     return <>
     <Header></Header>
-    <div className="container bg-light">
+    <div className="container bg-light mt-2">
       <form className="pt-1">
-          <Link className="btn btn-warning float-right" to={'foods/newItem'}>New Item  </Link> 
+          {this.showAddButton()}
       </form>
         <form className="clearfix pt-3">
         <label htmlFor="searchBar"> Search</label>
@@ -88,6 +94,7 @@ export class SearchView extends React.Component{
                 <option value="price">Cost</option>
                 <option value="rating">Rating</option>
             </select>
+        <div className="table-responsive">
         <table className="table">
           <thead>
             <tr>
@@ -119,6 +126,7 @@ export class SearchView extends React.Component{
             }
           </tbody>
         </table>
+        </div>
         </form>
     </div>
     </>

@@ -47,12 +47,13 @@ export class ItemEditView extends React.Component{
   componentWillMount(){
     this.foodRepository.getFood(+this.props.match.params.foodID)
     .then(f => {
+      console.log(f[0])
       this.setState({
         id: f[0].productID, 
         name: f[0].name, 
         price: f[0].price,
         numSearches: f[0].numSearches,
-        exprDate: f[0].expirationDate, 
+        exprDate: f[0].expirationDate.substr(0, 10),
         storeID: f[0].storeID, 
         location: f[0].locationID, 
         stock:f[0].stock, 
@@ -70,11 +71,21 @@ export class ItemEditView extends React.Component{
       return <>
       <Header></Header>
       <div className="container bg-light">
-      <button type="button" className="btn btn-danger float-right"
+      <button type="button" className="btn btn-danger float-right mt-2"
             onClick={ () => this.deleteItem() }> Delete Item </button>
       <div className="d-inline-flex p-2">
-        <img className="img-thumbnail img-fluid w-50 h-50 p-3" alt="Current Product" src={this.state.imageURL}></img>
-        <div className="">
+        <div className="w-50 pr-5">
+          <img className="img-thumbnail img-fluid w-100 h-50 p-3" alt="Current Product" src={this.state.imageURL}></img>
+          <br></br>
+          <label htmlFor="imageURL" className="pt-1"> Image URL</label>
+          <input name="imageURL"
+                  id="imageURL"
+                  className="form-control w-100"
+                  type="text"
+                  value={this.state.imageURL}
+                  onChange={event => this.setState({imageURL: event.target.value })} />
+        </div>
+        <div className="w-50 pr-5">
         <label htmlFor="name"> Name</label>
         <input name="name"
                 id="name"
@@ -133,15 +144,22 @@ export class ItemEditView extends React.Component{
                 checked={this.state.isFresh}
                 onChange={event => this.setState({isFresh: event.target.checked })} 
                 />
+        <label htmlFor="exprDate"> Expiration Date <span className="text text-secondary"> (format: yyyy-mm-dd) </span></label>
+        <input name="exprDate"
+                id="exprDate"
+                className="form-control"
+                type="text"
+                value={this.state.exprDate}
+                onChange={event => this.setState({exprDate: event.target.value })} />
         </div>
       </div>
-      <form>
-            <button type="button" className="btn btn-secondary" 
+      <form className="pb-3">
+            <button type="button" className="btn btn-secondary ml-1" 
             onClick={() =>{
               this.props.history.goBack();
             }}
               > Cancel </button>
-            <button type="button" className="btn btn-primary"
+            <button type="button" className="btn btn-primary ml-2"
             onClick={ () => this.saveChanges() }> <Link className="" to={'foods/' + this.state.id}> </Link> Save </button>
           </form>
     </div>

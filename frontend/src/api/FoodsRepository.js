@@ -30,14 +30,13 @@ export class FoodsRepository {
     }
 
     updateFood(food) {
-        console.log(food)
-        console.log (food.isFresh ? 1 : 0)
-        console.log (food.isLocallyGrown ? 1 : 0)
         return new Promise((resolve, reject) => {
-            axios.put(`${this.url}/editproduct?productID=+${food.id}&name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
-                &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}&
-                isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+0&imageURL=${food.imageURL}&productDesc=${food.description}`)
-            .then(x => resolve(x.data))
+            axios.put(`${this.url}/editproduct?productID=+${food.id}&name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${food.expirationDate}
+            &storeID=+1&locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}
+            &isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+${food.rating}&imageURL=${food.imageURL}&productDesc=${food.description}`)
+            .then(x => {
+                resolve(x.data)
+            })
             .catch(e => {
                 alert(e);
                 reject();
@@ -45,7 +44,6 @@ export class FoodsRepository {
         });
     }
     createFood(food) {
-        console.log(food)
         return new Promise((resolve, reject) => {
             axios.post(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
                 &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}&
@@ -75,6 +73,16 @@ export class FoodsRepository {
                 resolve(x.data);
             }
             )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+    createAccount(first, last, userName, password) {
+        return new Promise((resolve, reject) => {
+            axios.post(`${this.url}/newaccount?username=${userName}&password=${password}&firstName=${first}&lastName=${last}&accountTypeID=+1`)
+            .then(x => resolve(x.data))
             .catch(e => {
                 alert(e);
                 reject();
