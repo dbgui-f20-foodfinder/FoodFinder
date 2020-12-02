@@ -473,9 +473,9 @@ app.post('/newnotification/user', async (req, res) => {
 
 // Delete a product
 app.delete('/deletenotification', async (req, res) => {
-  var notificationID = req.param('notificationID')
+  var userID = req.param('userID')
 
-  connection.query('DELETE FROM notifications WHERE notificationID = ?', notificationID, function (err, result, fields) {
+  connection.query('DELETE FROM notifications WHERE userID = ?', userID, function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
