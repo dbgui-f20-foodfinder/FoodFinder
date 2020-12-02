@@ -416,7 +416,7 @@ app.put('/give/instorecredit', async (req, res) => {
 app.put('/give/all/instorecredit', async (req, res) => {
   var credit = req.param('credit');
 
-  connection.query('SET SQL_SAFE_UPDATES = 0; UPDATE user SET inStoreCredit = inStoreCredit + ?', credit, function (err, result, fields) {
+  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ?', credit, function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
