@@ -163,7 +163,7 @@ export class MapView extends React.Component{
 
   <div className="container">
     <div className="row">
-      <div className="col-8 aisle1" data-toggle="modal" data-target="#aisle1Prev">
+      <div className="col p-4 aisle1" data-toggle="modal" data-target="#aisle1Prev">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           id="svg962"
@@ -242,87 +242,7 @@ export class MapView extends React.Component{
           </g>
         </svg>
       </div>
-      <div className="col-3 aisle2" data-toggle="modal" data-target="#aisle2Prev">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="svg2186"
-          width="456.483"
-          height="458.186"
-          version="1.1"
-          viewBox="0 0 120.778 121.228"
-        >
-          <g id="layer1" transform="translate(-26.546 -67.142)">
-            <path
-              id="grey2"
-              fill="#b7bec8"
-              strokeWidth="0.265"
-              d="M26.546 -188.37H140.696V-74.4H26.546z"
-              display="inline"
-              transform="scale(1 -1)"
-            ></path>
-            <path
-              id="blu2"
-              fill="#55f"
-              strokeWidth="0.265"
-              d="M33.173 67.142H147.323V181.112H33.173z"
-              display="inline"
-            ></path>
-            <text
-              xmlSpace="preserve"
-              style={{
-                lineHeight: "1.25",
-                InkscapeFontSpecification: "'sans-serif, Bold'",
-                fontVariantLigatures: "normal",
-                fontVariantCaps: "normal",
-                fontVariantNumeric: "normal",
-                fontVariantEastAsian: "normal",
-              }}
-              id="text131-3-9"
-              x="57.458"
-              y="121.88"
-              fill="#cf0"
-              fillOpacity="1"
-              stroke="none"
-              strokeWidth="0.55"
-              display="inline"
-              fontFamily="sans-serif"
-              fontSize="22.005"
-              fontStretch="normal"
-              fontStyle="normal"
-              fontVariant="normal"
-              fontWeight="bold"
-              transform="scale(.9159 1.09183)"
-            >
-              <tspan
-                id="tspan129-0-1"
-                x="57.458"
-                y="121.88"
-                style={{
-                  InkscapeFontSpecification: "'sans-serif, Bold'",
-                  fontVariantLigatures: "normal",
-                  fontVariantCaps: "normal",
-                  fontVariantNumeric: "normal",
-                  fontVariantEastAsian: "normal",
-                }}
-                fill="#cf0"
-                strokeWidth="0.55"
-                fontFamily="sans-serif"
-                fontSize="22.005"
-                fontStretch="normal"
-                fontStyle="normal"
-                fontVariant="normal"
-                fontWeight="bold"
-              >
-                Aisle 2
-              </tspan>
-            </text>
-          </g>
-        </svg>
-      </div>
-    </div>
-      
-    <div className="row">
-      <div className="col-auto aisle3" data-toggle="modal" data-target="#aisle3Prev">
+      <div className="col p-4 aisle2" data-toggle="modal" data-target="#aisle2Prev">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           id="svg2799"
@@ -394,13 +314,248 @@ export class MapView extends React.Component{
                 fontVariant="normal"
                 fontWeight="bold"
               >
+                Aisle 2
+              </tspan>
+            </text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col p-4 aisle3" data-toggle="modal" data-target="#aisle3Prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="svg2186"
+          width="456.483"
+          height="458.186"
+          version="1.1"
+          viewBox="0 0 120.778 121.228"
+        >
+          <g id="layer1" transform="translate(-26.546 -67.142)">
+            <path
+              id="grey2"
+              fill="#b7bec8"
+              strokeWidth="0.265"
+              d="M26.546 -188.37H140.696V-74.4H26.546z"
+              display="inline"
+              transform="scale(1 -1)"
+            ></path>
+            <path
+              id="blu2"
+              fill="#55f"
+              strokeWidth="0.265"
+              d="M33.173 67.142H147.323V181.112H33.173z"
+              display="inline"
+            ></path>
+            <text
+              xmlSpace="preserve"
+              style={{
+                lineHeight: "1.25",
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              id="text131-3-9"
+              x="57.458"
+              y="121.88"
+              fill="#cf0"
+              fillOpacity="1"
+              stroke="none"
+              strokeWidth="0.55"
+              display="inline"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+              transform="scale(.9159 1.09183)"
+            >
+              <tspan
+                id="tspan129-0-1"
+                x="57.458"
+                y="121.88"
+                style={{
+                  InkscapeFontSpecification: "'sans-serif, Bold'",
+                  fontVariantLigatures: "normal",
+                  fontVariantCaps: "normal",
+                  fontVariantNumeric: "normal",
+                  fontVariantEastAsian: "normal",
+                }}
+                fill="#cf0"
+                strokeWidth="0.55"
+                fontFamily="sans-serif"
+                fontSize="22.005"
+                fontStretch="normal"
+                fontStyle="normal"
+                fontVariant="normal"
+                fontWeight="bold"
+              >
                 Aisle 3
               </tspan>
             </text>
           </g>
         </svg>
       </div>
-      <div className="col-auto aisle4" data-toggle="modal" data-target="#aisle4Prev">
+      <div className="col p-4 aisle4" data-toggle="modal" data-target="#aisle4Prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="svg2799"
+          width="209.623"
+          height="493.148"
+          version="1.1"
+          viewBox="0 0 55.463 130.479"
+        >
+          <g id="layer1" transform="translate(-146.894 -107.118)">
+            <path
+              id="grey3"
+              fill="#b7bec8"
+              strokeWidth="0.265"
+              d="M146.894 114.376H195.729V237.597H146.894z"
+              display="inline"
+            ></path>
+            <path
+              id="blu3"
+              fill="#55f"
+              strokeDasharray="none"
+              strokeMiterlimit="4"
+              strokeWidth="0.265"
+              d="M153.521 107.118H202.356V230.339H153.521z"
+              display="inline"
+            ></path>
+            <text
+              xmlSpace="preserve"
+              style={{
+                lineHeight: "1.25",
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              id="text131-2"
+              x="-225.09"
+              y="171.167"
+              fill="#cf0"
+              fillOpacity="1"
+              stroke="none"
+              strokeWidth="0.55"
+              display="inline"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+              transform="matrix(0 -.9159 1.09183 0 0 0)"
+            >
+              <tspan
+                id="tspan129-3"
+                x="-225.09"
+                y="171.167"
+                style={{
+                  InkscapeFontSpecification: "'sans-serif, Bold'",
+                  fontVariantLigatures: "normal",
+                  fontVariantCaps: "normal",
+                  fontVariantNumeric: "normal",
+                  fontVariantEastAsian: "normal",
+                }}
+                fill="#cf0"
+                strokeWidth="0.55"
+                fontFamily="sans-serif"
+                fontSize="22.005"
+                fontStretch="normal"
+                fontStyle="normal"
+                fontVariant="normal"
+                fontWeight="bold"
+              >
+                Aisle 4
+              </tspan>
+            </text>
+          </g>
+        </svg>
+      </div>
+      <div className="col p-4 aisle5" data-toggle="modal" data-target="#aisle5Prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="svg2799"
+          width="209.623"
+          height="493.148"
+          version="1.1"
+          viewBox="0 0 55.463 130.479"
+        >
+          <g id="layer1" transform="translate(-146.894 -107.118)">
+            <path
+              id="grey3"
+              fill="#b7bec8"
+              strokeWidth="0.265"
+              d="M146.894 114.376H195.729V237.597H146.894z"
+              display="inline"
+            ></path>
+            <path
+              id="blu3"
+              fill="#55f"
+              strokeDasharray="none"
+              strokeMiterlimit="4"
+              strokeWidth="0.265"
+              d="M153.521 107.118H202.356V230.339H153.521z"
+              display="inline"
+            ></path>
+            <text
+              xmlSpace="preserve"
+              style={{
+                lineHeight: "1.25",
+                InkscapeFontSpecification: "'sans-serif, Bold'",
+                fontVariantLigatures: "normal",
+                fontVariantCaps: "normal",
+                fontVariantNumeric: "normal",
+                fontVariantEastAsian: "normal",
+              }}
+              id="text131-2"
+              x="-225.09"
+              y="171.167"
+              fill="#cf0"
+              fillOpacity="1"
+              stroke="none"
+              strokeWidth="0.55"
+              display="inline"
+              fontFamily="sans-serif"
+              fontSize="22.005"
+              fontStretch="normal"
+              fontStyle="normal"
+              fontVariant="normal"
+              fontWeight="bold"
+              transform="matrix(0 -.9159 1.09183 0 0 0)"
+            >
+              <tspan
+                id="tspan129-3"
+                x="-225.09"
+                y="171.167"
+                style={{
+                  InkscapeFontSpecification: "'sans-serif, Bold'",
+                  fontVariantLigatures: "normal",
+                  fontVariantCaps: "normal",
+                  fontVariantNumeric: "normal",
+                  fontVariantEastAsian: "normal",
+                }}
+                fill="#cf0"
+                strokeWidth="0.55"
+                fontFamily="sans-serif"
+                fontSize="22.005"
+                fontStretch="normal"
+                fontStyle="normal"
+                fontVariant="normal"
+                fontWeight="bold"
+              >
+                Aisle 5
+              </tspan>
+            </text>
+          </g>
+        </svg>
+      </div>
+      {/* <div className="col-auto aisle4" data-toggle="modal" data-target="#aisle4Prev">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           id="svg3410"
@@ -556,7 +711,7 @@ export class MapView extends React.Component{
             </text>
           </g>
         </svg>
-      </div>
+      </div> */}
     </div>
     <div className="row">
       <svg
@@ -577,7 +732,7 @@ export class MapView extends React.Component{
           ></path>
           <path
             id="blu0"
-            fill="#55f"
+            fill=""
             strokeDasharray="none"
             strokeMiterlimit="4"
             strokeWidth="0.346"
@@ -621,7 +776,7 @@ export class MapView extends React.Component{
                 fontVariantNumeric: "normal",
                 fontVariantEastAsian: "normal",
               }}
-              fill="#cf0"
+              fill="#55f"
               strokeWidth="0.55"
               fontFamily="sans-serif"
               fontSize="22.005"
