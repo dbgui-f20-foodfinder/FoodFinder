@@ -435,7 +435,7 @@ app.get('/notifications', function (req, res) {
 app.get('/notifications/user', function (req, res) {
   var userID = req.param('userID');
 
-  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = ? OR userID = 0", userID, function (err, result, fields) {
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = ? OR userID = 12", userID, function (err, result, fields) {
     if (err) {
       res.end("Incorrect username or password. Please try again!");
       throw err;
@@ -452,7 +452,7 @@ app.post('/newnotification/global', async (req, res) => {
     notifText : req.param('notifText')
   };
 
-  connection.query('INSERT INTO notifications SET userID = 0, ?', newNotification, function (err, result, fields) {
+  connection.query('INSERT INTO notifications SET userID = 12, ?', newNotification, function (err, result, fields) {
     if (err) throw err;
     res.end(JSON.stringify(result));
   });
