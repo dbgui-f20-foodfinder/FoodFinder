@@ -412,6 +412,16 @@ app.put('/give/instorecredit', async (req, res) => {
   });
 });
 
+
+app.put('/give/all/instorecredit', async (req, res) => {
+  var credit = req.param('credit');
+
+  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ?', credit, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
 // ! - NONE OF THESE HAVE BEEN TESTED YET
 // -------------------------------------------------------------------------------------
 //                                    NOTIFICATIONS
