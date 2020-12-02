@@ -49,6 +49,9 @@ export class Header extends React.Component{
         { this.state.alerts.map((x,i) =>{
             return <div key={i} className="alert alert-info alert-dismissible show" role="alert">
               {x.notifText}
+              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         })
         }
