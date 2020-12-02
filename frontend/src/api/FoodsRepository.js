@@ -47,7 +47,7 @@ export class FoodsRepository {
         return new Promise((resolve, reject) => {
             axios.post(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
                 &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}&
-                isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+0&imageURL=${food.imageURL}&productDesc=${food.description}`)
+                isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+5&imageURL=${food.imageURL}&productDesc=${food.description}`)
             .then(x => resolve(x.data))
             .catch(e => {
                 alert(e);
@@ -116,21 +116,7 @@ export class FoodsRepository {
         });
     }
 
-    getAlertsAll() {
-        return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/notifications`)
-            .then(x => {
-                resolve(x.data);
-            }
-            )
-            .catch(e => {
-                alert(e);
-                reject();
-            });
-        });
-    }
-
-    getAlerts(id) {
+    getAlertsUser(id) {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/notifications/user?userID=${id}`)
             .then(x => {
@@ -144,9 +130,9 @@ export class FoodsRepository {
         });
     }
 
-    sendAlert(id, alert) {
+    getAllAlerts() {
         return new Promise((resolve, reject) => {
-            axios.post(`${this.url}/`)
+            axios.get(`${this.url}/notifications`)
             .then(x => {
                 resolve(x.data);
             }
@@ -158,9 +144,23 @@ export class FoodsRepository {
         });
     }
 
-    sendAlertAll(alert) {
+    sendAlert(id, text) {
         return new Promise((resolve, reject) => {
-            axios.post(`${this.url}/`)
+            axios.post(`${this.url}/newnotification/user?userID=${+id}&notifCategoryID=1&notifText=${text}`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
+    sendAlertAll(text) {
+        return new Promise((resolve, reject) => {
+            axios.post(`${this.url}/newnotification/global?notifCategoryID=1&notifText=${text}`)
             .then(x => {
                 resolve(x.data);
             }
@@ -173,17 +173,48 @@ export class FoodsRepository {
     }
 
     deleteAlerts(id) {
-    //     return new Promise((resolve, reject) => {
-    //         axios.delete(`${this.url}/`)
-    //         .then(x => {
-    //             resolve(x.data);
-    //         }
-    //         )
-    //         .catch(e => {
-    //             alert(e);
-    //             reject();
-    //         });
-    //     });
+        return new Promise((resolve, reject) => {
+            axios.delete(`${this.url}/deletenotification?userID=${id}`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
     }
+
+    sendCredit(id, credit) {
+        console.log(credit)
+        return new Promise((resolve, reject) => {
+            axios.put(`${this.url}/give/instorecredit?userID=${id}&credit=${credit}`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
+    sendCreditAll(credit) {
+        return new Promise((resolve, reject) => {
+            axios.put(`${this.url}/give/all/instorecredit?credit=${credit}`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
+
 }
 export default FoodsRepository;
