@@ -420,7 +420,7 @@ app.put('/give/instorecredit', async (req, res) => {
 // Retrieve all notifications with notification category included
 app.get('/notifications', function (req, res) {
 
-  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID", userID, function (err, result, fields) {
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID", function (err, result, fields) {
     if (err) {
       res.end("Incorrect username or password. Please try again!");
       throw err;
