@@ -129,6 +129,154 @@ app.put('/editproduct', async (req, res) => {
   });
 });
 
+
+app.post('/newaccount', async (req, res) => {
+  var newAccount = {
+    username : req.param('username'),
+    password : req.param('password'),
+    firstName : req.param('firstName'),
+    lastName : req.param('lastName'),
+    inStoreCredit : 0,
+    accountTypeID : req.param('accountTypeID')
+  };
+
+  connection.query('INSERT INTO user SET ?', newAccount, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// given a username, return the userID (This can be used to fetch other userInfo).
+app.get('/userinfo', function (req, res) {
+  var username = req.param('username');
+
+  connection.query("SELECT userID FROM user WHERE username = ?", username, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
+// how a user logins
+app.get('/login', function (req, res) {
+  var username = req.param('username');
+  var password = req.param('password');
+
+  connection.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
+    if (err) {
+      res.end("Incorrect username or password. Please try again!");
+      throw err;
+    } 
+    else  {
+      res.end(JSON.stringify(result));
+    }
+  });
+});
+
+
+// 5.1
+app.get('/profileInfo', function (req, res) {
+  var userID = req.param('userID');
+
+  connection.query("SELECT firstName, lastName, inStoreCredit FROM user WHERE userID = ?", userID, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
+// 5.4
+// giving in store credit to a customer
+app.put('/give/instorecredit', async (req, res) => {
+  var userID = req.param('userID');
+  var credit = req.param('credit');
+
+  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ? WHERE userID = ?', [credit, userID], function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
+app.put('/give/all/instorecredit', async (req, res) => {
+  var credit = req.param('credit');
+
+  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ?', credit, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+
+// Retrieve all notifications with notification category included
+app.get('/notifications', function (req, res) {
+
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = 12", function (err, result, fields) {
+    if (err) {
+      res.end("Incorrect username or password. Please try again!");
+      throw err;
+    } 
+    else  {
+      res.end(JSON.stringify(result));
+    }
+  });
+});
+
+// Recieve all notifications for a given user (including global notifications)
+app.get('/notifications/user', function (req, res) {
+  var userID = req.param('userID');
+
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = ?", userID, function (err, result, fields) {
+    if (err) {
+      res.end("Incorrect username or password. Please try again!");
+      throw err;
+    } 
+    else  {
+      res.end(JSON.stringify(result));
+    }
+  });
+});
+
+app.post('/newnotification/global', async (req, res) => {
+  var newNotification = {
+    notifCategoryID : req.param('notifCategoryID'),
+    notifText : req.param('notifText')
+  };
+
+  connection.query('INSERT INTO notifications SET userID = 12, ?', newNotification, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+app.post('/newnotification/user', async (req, res) => {
+  var newNotification = {
+    userID : req.param('userID'),
+    notifCategoryID : req.param('notifCategoryID'),
+    notifText : req.param('notifText')
+  };
+
+  connection.query('INSERT INTO notifications SET ?', newNotification, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// Delete all notifications for a given user
+app.delete('/deletenotification', async (req, res) => {
+  var userID = req.param('userID')
+
+  connection.query('DELETE FROM notifications WHERE userID = ?', userID, function (err, result, fields) {
+    if (err) throw err;
+    res.end(JSON.stringify(result));
+  });
+});
+
+// -------------------------------------------------------------------------------------
+//                                    APIS WE USE ARE ABOVE THIS!!!
+// -------------------------------------------------------------------------------------
+
+
 // Displays items sorted by expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
@@ -345,151 +493,14 @@ app.get('/locations/get_products', async (req, res) => {
 //                                        USERS
 // -------------------------------------------------------------------------------------
 
-app.post('/newaccount', async (req, res) => {
-  var newAccount = {
-    username : req.param('username'),
-    password : req.param('password'),
-    firstName : req.param('firstName'),
-    lastName : req.param('lastName'),
-    inStoreCredit : 0,
-    accountTypeID : req.param('accountTypeID')
-  };
 
-  connection.query('INSERT INTO user SET ?', newAccount, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
-
-// given a username, return the userID (This can be used to fetch other userInfo).
-app.get('/userinfo', function (req, res) {
-  var username = req.param('username');
-
-  connection.query("SELECT userID FROM user WHERE username = ?", username, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
-
-
-// how a user logins
-app.get('/login', function (req, res) {
-  var username = req.param('username');
-  var password = req.param('password');
-
-  connection.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], function (err, result, fields) {
-    if (err) {
-      res.end("Incorrect username or password. Please try again!");
-      throw err;
-    } 
-    else  {
-      res.end(JSON.stringify(result));
-    }
-  });
-});
-
-
-// 5.1
-app.get('/profileInfo', function (req, res) {
-  var userID = req.param('userID');
-
-  connection.query("SELECT firstName, lastName, inStoreCredit FROM user WHERE userID = ?", userID, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
-
-
-// 5.4
-// giving in store credit to a customer
-app.put('/give/instorecredit', async (req, res) => {
-  var userID = req.param('userID');
-  var credit = req.param('credit');
-
-  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ? WHERE userID = ?', [credit, userID], function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
-
-
-app.put('/give/all/instorecredit', async (req, res) => {
-  var credit = req.param('credit');
-
-  connection.query('UPDATE user SET inStoreCredit = inStoreCredit + ?', credit, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
 
 // ! - NONE OF THESE HAVE BEEN TESTED YET
 // -------------------------------------------------------------------------------------
 //                                    NOTIFICATIONS
 // -------------------------------------------------------------------------------------
 
-// Retrieve all notifications with notification category included
-app.get('/notifications', function (req, res) {
 
-  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = 12", function (err, result, fields) {
-    if (err) {
-      res.end("Incorrect username or password. Please try again!");
-      throw err;
-    } 
-    else  {
-      res.end(JSON.stringify(result));
-    }
-  });
-});
-
-// Recieve all notifications for a given user (including global notifications)
-app.get('/notifications/user', function (req, res) {
-  var userID = req.param('userID');
-
-  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = ?", userID, function (err, result, fields) {
-    if (err) {
-      res.end("Incorrect username or password. Please try again!");
-      throw err;
-    } 
-    else  {
-      res.end(JSON.stringify(result));
-    }
-  });
-});
-
-app.post('/newnotification/global', async (req, res) => {
-  var newNotification = {
-    notifCategoryID : req.param('notifCategoryID'),
-    notifText : req.param('notifText')
-  };
-
-  connection.query('INSERT INTO notifications SET userID = 12, ?', newNotification, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
-
-app.post('/newnotification/user', async (req, res) => {
-  var newNotification = {
-    userID : req.param('userID'),
-    notifCategoryID : req.param('notifCategoryID'),
-    notifText : req.param('notifText')
-  };
-
-  connection.query('INSERT INTO notifications SET ?', newNotification, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
-
-// Delete all notifications for a given user
-app.delete('/deletenotification', async (req, res) => {
-  var userID = req.param('userID')
-
-  connection.query('DELETE FROM notifications WHERE userID = ?', userID, function (err, result, fields) {
-    if (err) throw err;
-    res.end(JSON.stringify(result));
-  });
-});
 
 // -------------------------------------------------------------------------------------
 //                                        OTHER
