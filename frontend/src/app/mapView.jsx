@@ -31,7 +31,7 @@ export class MapView extends React.Component{
 
   return <>
   <Header></Header>
-  {/* <div className="mt-2"> */}
+  {/* <div className="d-flex mt-2"> */}
 
   {/* Aisle 1 Preview */}
   <div className="modal fade" id="aisle1Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -250,11 +250,11 @@ export class MapView extends React.Component{
 
   <div className="container">
     <div className="row">
-      <div className="col p-4 aisle1" data-toggle="modal" data-target="#aisle1Prev">
-        <svg
+      <div className="col aisle1 aisle2">
+        <svg data-toggle="modal" data-target="#aisle1Prev"
           xmlns="http://www.w3.org/2000/svg"
           id="svg962"
-          width="691.217"
+          width="70%"//"691.217"
           height="458.492"
           version="1.1"
           viewBox="0 0 182.885 121.309"
@@ -328,12 +328,12 @@ export class MapView extends React.Component{
             </text>
           </g>
         </svg>
-      </div>
-      <div className="col p-4 aisle2" data-toggle="modal" data-target="#aisle2Prev">
-        <svg
+      
+
+        <svg data-toggle="modal" data-target="#aisle2Prev"
           xmlns="http://www.w3.org/2000/svg"
           id="svg2799"
-          width="209.623"
+          width="20%"//"209.623"
           height="493.148"
           version="1.1"
           viewBox="0 0 55.463 130.479"
@@ -408,12 +408,13 @@ export class MapView extends React.Component{
         </svg>
       </div>
     </div>
+    
     <div className="row">
-      <div className="col p-4 aisle3" data-toggle="modal" data-target="#aisle3Prev">
-        <svg
+      <div className="col aisle3 aisle4 aisle5">
+        <svg data-toggle="modal" data-target="#aisle3Prev"
           xmlns="http://www.w3.org/2000/svg"
           id="svg2186"
-          width="456.483"
+          width="49%"//"456.483"
           height="458.186"
           version="1.1"
           viewBox="0 0 120.778 121.228"
@@ -485,12 +486,10 @@ export class MapView extends React.Component{
             </text>
           </g>
         </svg>
-      </div>
-      <div className="col p-4 aisle4" data-toggle="modal" data-target="#aisle4Prev">
-        <svg
+        <svg data-toggle="modal" data-target="#aisle4Prev"
           xmlns="http://www.w3.org/2000/svg"
           id="svg2799"
-          width="209.623"
+          width="25%"//"209.623"
           height="493.148"
           version="1.1"
           viewBox="0 0 55.463 130.479"
@@ -563,12 +562,10 @@ export class MapView extends React.Component{
             </text>
           </g>
         </svg>
-      </div>
-      <div className="col p-4 aisle5" data-toggle="modal" data-target="#aisle5Prev">
-        <svg
+        <svg data-toggle="modal" data-target="#aisle5Prev"
           xmlns="http://www.w3.org/2000/svg"
           id="svg2799"
-          width="209.623"
+          width="26%"//"209.623"
           height="493.148"
           version="1.1"
           viewBox="0 0 55.463 130.479"
@@ -642,164 +639,8 @@ export class MapView extends React.Component{
           </g>
         </svg>
       </div>
-      {/* <div className="col-auto aisle4" data-toggle="modal" data-target="#aisle4Prev">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="svg3410"
-          width="457.292"
-          height="428.28"
-          version="1.1"
-          viewBox="0 0 120.992 113.316"
-        >
-          <g id="layer1" transform="translate(-80.111 -55.223)">
-            <path
-              id="grey4"
-              fill="#b7bec8"
-              strokeWidth="0.265"
-              d="M80.002 62.721H194.274V168.679H80.002z"
-              display="inline"
-              transform="rotate(-.1)"
-            ></path>
-            <path
-              id="blu4"
-              fill="#55f"
-              strokeDasharray="none"
-              strokeMiterlimit="4"
-              strokeWidth="0.265"
-              d="M86.831 55.223H201.103V161.18099999999998H86.831z"
-              display="inline"
-            ></path>
-            <text
-              xmlSpace="preserve"
-              style={{
-                lineHeight: "1.25",
-                InkscapeFontSpecification: "'sans-serif, Bold'",
-                fontVariantLigatures: "normal",
-                fontVariantCaps: "normal",
-                fontVariantNumeric: "normal",
-                fontVariantEastAsian: "normal",
-              }}
-              id="text131"
-              x="115.562"
-              y="107.295"
-              fill="#cf0"
-              fillOpacity="1"
-              stroke="none"
-              strokeWidth="0.55"
-              display="inline"
-              fontFamily="sans-serif"
-              fontSize="22.005"
-              fontStretch="normal"
-              fontStyle="normal"
-              fontVariant="normal"
-              fontWeight="bold"
-              transform="scale(.9159 1.09183)"
-            >
-              <tspan
-                id="tspan129"
-                x="115.562"
-                y="107.295"
-                style={{
-                  InkscapeFontSpecification: "'sans-serif, Bold'",
-                  fontVariantLigatures: "normal",
-                  fontVariantCaps: "normal",
-                  fontVariantNumeric: "normal",
-                  fontVariantEastAsian: "normal",
-                }}
-                fill="#cf0"
-                strokeWidth="0.55"
-                fontFamily="sans-serif"
-                fontSize="22.005"
-                fontStretch="normal"
-                fontStyle="normal"
-                fontVariant="normal"
-                fontWeight="bold"
-              >
-                Aisle 4{" "}
-              </tspan>
-            </text>
-          </g>
-        </svg>
-      </div>
-      <div className="col-4 aisle5" data-toggle="modal" data-target="#aisle5Prev">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="svg4033"
-          width="456.939"
-          height="427.904"
-          version="1.1"
-          viewBox="0 0 120.898 113.216"
-        >
-          <g id="layer1" transform="translate(-33.289 -33.35)">
-            <path
-              id="grey5"
-              fill="#b7bec8"
-              strokeWidth="0.265"
-              d="M33.289 40.608H147.56V146.566H33.289z"
-              display="inline"
-            ></path>
-            <path
-              id="blu5"
-              fill="#55f"
-              strokeDasharray="none"
-              strokeMiterlimit="4"
-              strokeWidth="0.265"
-              d="M39.917 33.35H154.188V139.308H39.917z"
-              display="inline"
-            ></path>
-            <text
-              xmlSpace="preserve"
-              style={{
-                lineHeight: "1.25",
-                InkscapeFontSpecification: "'sans-serif, Bold'",
-                fontVariantLigatures: "normal",
-                fontVariantCaps: "normal",
-                fontVariantNumeric: "normal",
-                fontVariantEastAsian: "normal",
-              }}
-              id="text131-3-9-0"
-              x="64.406"
-              y="89.177"
-              fill="#cf0"
-              fillOpacity="1"
-              stroke="none"
-              strokeWidth="0.55"
-              display="inline"
-              fontFamily="sans-serif"
-              fontSize="22.005"
-              fontStretch="normal"
-              fontStyle="normal"
-              fontVariant="normal"
-              fontWeight="bold"
-              transform="scale(.9159 1.09183)"
-            >
-              <tspan
-                id="tspan129-0-1-9"
-                x="64.406"
-                y="89.177"
-                style={{
-                  InkscapeFontSpecification: "'sans-serif, Bold'",
-                  fontVariantLigatures: "normal",
-                  fontVariantCaps: "normal",
-                  fontVariantNumeric: "normal",
-                  fontVariantEastAsian: "normal",
-                }}
-                fill="#cf0"
-                strokeWidth="0.55"
-                fontFamily="sans-serif"
-                fontSize="22.005"
-                fontStretch="normal"
-                fontStyle="normal"
-                fontVariant="normal"
-                fontWeight="bold"
-              >
-                Aisle 5
-              </tspan>
-            </text>
-          </g>
-        </svg>
-      </div> */}
     </div>
+
     <div className="row">
       <svg
         xmlns="http://www.w3.org/2000/svg"
