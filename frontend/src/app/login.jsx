@@ -56,7 +56,7 @@ export class Login extends React.Component{
         <input name="password"
               id="password"
               className="form-control"
-              type="text"
+              type="password"
               value={this.state.password}
               onChange={event => this.setState({password: event.target.value })} />
               <Link 

@@ -1,6 +1,7 @@
 import React from 'react';
 import FoodRepository from '../api/FoodsRepository.js'
 import { Link } from 'react-router-dom'
+import Header from './header.jsx';
 
 export class AlertHub extends React.Component{
     foodRepository = new FoodRepository();
@@ -12,8 +13,8 @@ export class AlertHub extends React.Component{
     }
 
     sendAlert(){
-      if(sendAll){
-          this.foodRepository.sendAlertAll(this.state.alert);
+      if(this.state.sendAll){
+          this.foodRepository.sendAlertsAll(this.state.alert);
       }
       else{
           this.foodRepository.sendAlert(this.state.id, this.state.alert);
@@ -22,7 +23,7 @@ export class AlertHub extends React.Component{
   
     render(){
       return <>
-      
+      <Header></Header>
       <div className="container bg-light w-50 pb-3 pt-2">
         <label htmlFor="alert" > Alert</label>
         <input name="alert"
