@@ -471,7 +471,7 @@ app.post('/newnotification/user', async (req, res) => {
   });
 });
 
-// Delete a product
+// Delete all notifications for a given user
 app.delete('/deletenotification', async (req, res) => {
   var userID = req.param('userID')
 
