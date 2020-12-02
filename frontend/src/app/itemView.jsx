@@ -51,7 +51,7 @@ export class ItemView extends React.Component{
   }
 
   renderAlerts(){
-    return <div className="float-right">
+    return <div className="position-fixed">
       { this.state.alerts.map((x,i) =>{
           return <div key={i} className="alert alert-success alert-dismissible fade show" role="alert">
             Item added to cart!
@@ -70,7 +70,7 @@ export class ItemView extends React.Component{
     render(){
       return <>
       <Header></Header>
-      <div className="float-right position-fixed ">{ this.renderAlerts()}</div>
+      <div>{ this.renderAlerts()}</div>
       <div className="container bg-light">
       {this.showEditButton()}
       <div className="d-inline-flex p-2">

@@ -1,7 +1,7 @@
 import axios from 'axios';
 export class FoodsRepository {
-    url = 'http://3.137.163.61:8001';
-    //url = 'http://localhost:8001';
+    // url = 'http://3.137.163.61:8001';
+    url = 'http://localhost:8001';
     getFoods() {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/products`)
@@ -114,6 +114,76 @@ export class FoodsRepository {
                 reject();
             });
         });
+    }
+
+    getAlertsAll() {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/notifications`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
+    getAlerts(id) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/notifications/user?userID=${id}`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
+    sendAlert(id, alert) {
+        return new Promise((resolve, reject) => {
+            axios.post(`${this.url}/`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
+    sendAlertAll(alert) {
+        return new Promise((resolve, reject) => {
+            axios.post(`${this.url}/`)
+            .then(x => {
+                resolve(x.data);
+            }
+            )
+            .catch(e => {
+                alert(e);
+                reject();
+            });
+        });
+    }
+
+    deleteAlerts(id) {
+    //     return new Promise((resolve, reject) => {
+    //         axios.delete(`${this.url}/`)
+    //         .then(x => {
+    //             resolve(x.data);
+    //         }
+    //         )
+    //         .catch(e => {
+    //             alert(e);
+    //             reject();
+    //         });
+    //     });
     }
 }
 export default FoodsRepository;
