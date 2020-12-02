@@ -28,9 +28,10 @@ export class MapView extends React.Component{
   }
 
   render() { 
+
   return <>
   <Header></Header>
-  <div className="mt-2">
+  {/* <div className="mt-2"> */}
 
   {/* Aisle 1 Preview */}
   <div className="modal fade" id="aisle1Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -70,9 +71,7 @@ export class MapView extends React.Component{
       </div>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-success">More...</button>
-      </div>
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>      </div>
     </div>
   </div>
   </div>
@@ -88,12 +87,34 @@ export class MapView extends React.Component{
         </button>
       </div>
       <div className="modal-body">
-        Modal content
+        <div className="container bg-light">
+        <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th></th>
+          </tr>
+        </thead>
+          <tbody>
+            { this.state.foods.map((x,i) => {
+                if(x.aisle == 2) {
+                  return <tr key={i}>
+                    <td><Link className="text-decoration-underline text-primary" 
+                    onClick={()=> {this.props.history.push('foods/' + x.id)}}
+                    to={'foods/' + x.id}
+                    data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td>${parseFloat(x.price).toFixed(2)}</td>
+                  </tr>
+                }
+              })
+            }
+        </tbody>
+      </table>
+      </div>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-success">More...</button>
-      </div>
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>      </div>
     </div>
   </div>
   </div>
@@ -109,12 +130,34 @@ export class MapView extends React.Component{
         </button>
       </div>
       <div className="modal-body">
-        Modal content
+        <div className="container bg-light">
+        <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th></th>
+          </tr>
+        </thead>
+          <tbody>
+            { this.state.foods.map((x,i) => {
+                if(x.aisle == 3) {
+                  return <tr key={i}>
+                    <td><Link className="text-decoration-underline text-primary" 
+                    onClick={()=> {this.props.history.push('foods/' + x.id)}}
+                    to={'foods/' + x.id}
+                    data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td>${parseFloat(x.price).toFixed(2)}</td>
+                  </tr>
+                }
+              })
+            }
+        </tbody>
+      </table>
+      </div>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-success">More...</button>
-      </div>
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>      </div>
     </div>
   </div>
   </div>
@@ -130,12 +173,34 @@ export class MapView extends React.Component{
         </button>
       </div>
       <div className="modal-body">
-        Modal content
+        <div className="container bg-light">
+        <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th></th>
+          </tr>
+        </thead>
+          <tbody>
+            { this.state.foods.map((x,i) => {
+                if(x.aisle == 4) {
+                  return <tr key={i}>
+                    <td><Link className="text-decoration-underline text-primary" 
+                    onClick={()=> {this.props.history.push('foods/' + x.id)}}
+                    to={'foods/' + x.id}
+                    data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td>${parseFloat(x.price).toFixed(2)}</td>
+                  </tr>
+                }
+              })
+            }
+        </tbody>
+      </table>
+      </div>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-success">More...</button>
-      </div>
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>      </div>
     </div>
   </div>
   </div>
@@ -151,12 +216,34 @@ export class MapView extends React.Component{
         </button>
       </div>
       <div className="modal-body">
-        Modal content
+        <div className="container bg-light">
+        <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th></th>
+          </tr>
+        </thead>
+          <tbody>
+            { this.state.foods.map((x,i) => {
+                if(x.aisle == 5) {
+                  return <tr key={i}>
+                    <td><Link className="text-decoration-underline text-primary" 
+                    onClick={()=> {this.props.history.push('foods/' + x.id)}}
+                    to={'foods/' + x.id}
+                    data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td>${parseFloat(x.price).toFixed(2)}</td>
+                  </tr>
+                }
+              })
+            }
+        </tbody>
+      </table>
+      </div>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-success">More...</button>
-      </div>
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>      </div>
     </div>
   </div>
   </div>
@@ -792,7 +879,7 @@ export class MapView extends React.Component{
       </svg>
     </div>
   </div>
-  </div>
+  {/* </div> */}
   </>
 }
 };
