@@ -70,7 +70,7 @@ export class ItemView extends React.Component{
     render(){
       return <>
       <Header></Header>
-      <div className="">{ this.renderAlerts()}</div>
+      <div className="float-right position-fixed ">{ this.renderAlerts()}</div>
       <div className="container bg-light">
       {this.showEditButton()}
       <div className="d-inline-flex p-2">
