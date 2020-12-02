@@ -430,7 +430,7 @@ app.put('/give/all/instorecredit', async (req, res) => {
 // Retrieve all notifications with notification category included
 app.get('/notifications', function (req, res) {
 
-  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID", function (err, result, fields) {
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = 12", function (err, result, fields) {
     if (err) {
       res.end("Incorrect username or password. Please try again!");
       throw err;
@@ -445,7 +445,7 @@ app.get('/notifications', function (req, res) {
 app.get('/notifications/user', function (req, res) {
   var userID = req.param('userID');
 
-  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = ? OR userID = 12", userID, function (err, result, fields) {
+  connection.query("SELECT * FROM notifications n	INNER JOIN notifCategories nc	ON n.notifCategoryID = nc.notifCategoryID WHERE userID = ?", userID, function (err, result, fields) {
     if (err) {
       res.end("Incorrect username or password. Please try again!");
       throw err;
