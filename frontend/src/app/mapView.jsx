@@ -31,7 +31,6 @@ export class MapView extends React.Component{
 
   return <>
   <Header></Header>
-  {/* <div className="d-flex mt-2"> */}
 
   {/* Aisle 1 Preview */}
   <div className="modal fade" id="aisle1Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,6 +48,7 @@ export class MapView extends React.Component{
         <thead>
           <tr>
             <th scope="col">Product</th>
+            <th scope="col">Category</th>
             <th scope="col">Price</th>
             <th></th>
           </tr>
@@ -61,6 +61,7 @@ export class MapView extends React.Component{
                     onClick={()=> {this.props.history.push('foods/' + x.id)}}
                     to={'foods/' + x.id}
                     data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td> {x.category} </td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
                 }
@@ -92,6 +93,7 @@ export class MapView extends React.Component{
         <thead>
           <tr>
             <th scope="col">Product</th>
+            <th scope="col">Category</th>
             <th scope="col">Price</th>
             <th></th>
           </tr>
@@ -104,6 +106,7 @@ export class MapView extends React.Component{
                     onClick={()=> {this.props.history.push('foods/' + x.id)}}
                     to={'foods/' + x.id}
                     data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td> {x.category} </td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
                 }
@@ -135,6 +138,7 @@ export class MapView extends React.Component{
         <thead>
           <tr>
             <th scope="col">Product</th>
+            <th scope="col">Category</th>
             <th scope="col">Price</th>
             <th></th>
           </tr>
@@ -147,6 +151,7 @@ export class MapView extends React.Component{
                     onClick={()=> {this.props.history.push('foods/' + x.id)}}
                     to={'foods/' + x.id}
                     data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td> {x.category} </td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
                 }
@@ -178,6 +183,7 @@ export class MapView extends React.Component{
         <thead>
           <tr>
             <th scope="col">Product</th>
+            <th scope="col">Category</th>
             <th scope="col">Price</th>
             <th></th>
           </tr>
@@ -190,6 +196,7 @@ export class MapView extends React.Component{
                     onClick={()=> {this.props.history.push('foods/' + x.id)}}
                     to={'foods/' + x.id}
                     data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td> {x.category} </td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
                 }
@@ -221,6 +228,7 @@ export class MapView extends React.Component{
         <thead>
           <tr>
             <th scope="col">Product</th>
+            <th scope="col">Category</th>
             <th scope="col">Price</th>
             <th></th>
           </tr>
@@ -233,6 +241,7 @@ export class MapView extends React.Component{
                     onClick={()=> {this.props.history.push('foods/' + x.id)}}
                     to={'foods/' + x.id}
                     data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td> {x.category} </td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
                 }
@@ -248,12 +257,12 @@ export class MapView extends React.Component{
   </div>
   </div>
 
-  {/* Aisle 0 (Unstocked) Preview */}
+  {/* Aisle 0 (Unassigned) Preview */}
   <div className="modal fade" id="aisle0Prev" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Unstocked Preview</h5>
+        <h5 className="modal-title" id="exampleModalLabel">Unassigned Preview</h5>
         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -264,6 +273,7 @@ export class MapView extends React.Component{
         <thead>
           <tr>
             <th scope="col">Product</th>
+            <th scope="col">Category</th>
             <th scope="col">Price</th>
             <th></th>
           </tr>
@@ -276,6 +286,7 @@ export class MapView extends React.Component{
                     onClick={()=> {this.props.history.push('foods/' + x.id)}}
                     to={'foods/' + x.id}
                     data-dismiss="modal"> <u>{x.name}</u> </Link></td>
+                    <td> {x.category} </td>
                     <td>${parseFloat(x.price).toFixed(2)}</td>
                   </tr>
                 }
@@ -761,7 +772,6 @@ export class MapView extends React.Component{
       </svg>
     </div>
   </div>
-  {/* </div> */}
   </>
 }
 };
