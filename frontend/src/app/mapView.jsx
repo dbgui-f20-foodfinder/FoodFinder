@@ -3,7 +3,6 @@ import { Food } from '../models/food';
 import FoodRepository from '../api/FoodsRepository.js'
 import Header from './header';
 import { Link } from 'react-router-dom'
-import './mapView.css'
 
 
 export class MapView extends React.Component{
