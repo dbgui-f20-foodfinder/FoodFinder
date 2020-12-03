@@ -754,7 +754,7 @@ export class MapView extends React.Component{
               fontVariant="normal"
               fontWeight="bold"
             >
-              Unstocked
+              Unassigned
             </tspan>
           </text>
         </g>
