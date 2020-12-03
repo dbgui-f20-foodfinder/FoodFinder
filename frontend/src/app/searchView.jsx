@@ -102,7 +102,7 @@ export class SearchView extends React.Component{
               <th scope="col">Name</th>
               <th scope="col">Aisle #</th>
               <th scope="col">Stock</th>
-              <th scope="col">Food Group</th>
+              <th scope="col">Category</th>
               <th scope="col">Cost</th>
               <th scope="col">Rating</th>
             </tr>
