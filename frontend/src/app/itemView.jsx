@@ -49,7 +49,7 @@ export class ItemView extends React.Component{
     this.foodRepository.getFood(+this.props.match.params.foodID)
     .then(f => {
       this.setState({
-        item: new Food(f[0].productID, f[0].name, f[0].price, f[0].numSearches, f[0].expirationDate, f[0].storeID, f[0].locationID, f[0].stock, 
+        item: new Food(f[0].productID, f[0].name, f[0].price, f[0].numSearches, f[0].expirationDate.substr(0, 10), f[0].storeID, f[0].locationID, f[0].stock, 
           f[0].category, f[0].isFresh, f[0].isLocallyGrown, f[0].rating, f[0].imageURL, f[0].productDesc)
       });
     });
@@ -93,7 +93,7 @@ export class ItemView extends React.Component{
           <h5> Stock in Store: <span className="text-secondary"> {this.state.item.stock} </span></h5>
           <h5> Locally Grown: <span className="text-secondary"> {this.booleanToString(this.state.item.isLocallyGrown)} </span></h5>
           <h5> Fresh: <span className="text-secondary"> {this.booleanToString(this.state.item.isFresh)} </span></h5>
-          <h5> Expiration Date: <span className="text-secondary"> {this.substring(this.state.item.expirationDate)} </span></h5>
+          <h5> Expiration Date: <span className="text-secondary"> {this.state.item.expirationDate} </span></h5>
           
         </div>
       </div>
