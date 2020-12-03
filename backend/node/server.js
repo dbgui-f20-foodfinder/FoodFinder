@@ -275,6 +275,7 @@ app.delete('/deletenotification', async (req, res) => {
 // -------------------------------------------------------------------------------------
 
 
+/*
 // Displays items sorted by expiration date
 app.get('/products/expirationDate', function (req, res) {
   connection.query("SELECT * FROM products ORDER BY expirationDate DESC",
@@ -503,7 +504,7 @@ app.get('/locations/get_products', async (req, res) => {
 // -------------------------------------------------------------------------------------
 //                                        OTHER
 // -------------------------------------------------------------------------------------
-
+*/
 //connecting the express object to listen on a particular port as defined in the config object.
 app.listen(config.port, config.host, (e) => {
   if (e) {
