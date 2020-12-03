@@ -40,6 +40,11 @@ export class ItemView extends React.Component{
     }
   }
 
+  substring(input){
+    let string = input;
+    return string.substr(0, 10);
+  }
+
   componentWillMount(){
     this.foodRepository.getFood(+this.props.match.params.foodID)
     .then(f => {
@@ -88,6 +93,7 @@ export class ItemView extends React.Component{
           <h5> Stock in Store: <span className="text-secondary"> {this.state.item.stock} </span></h5>
           <h5> Locally Grown: <span className="text-secondary"> {this.booleanToString(this.state.item.isLocallyGrown)} </span></h5>
           <h5> Fresh: <span className="text-secondary"> {this.booleanToString(this.state.item.isFresh)} </span></h5>
+          <h5> Expiration Date: <span className="text-secondary"> {this.substring(this.state.item.expirationDate)} </span></h5>
           
         </div>
       </div>
