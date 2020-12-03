@@ -85,7 +85,6 @@ app.post('/newproduct', async (req, res) => {
   var newProduct = {
     name : req.param('name'),
     price : req.param('price'),
-    numSearches : req.param('numSearches'),
     expirationDate : req.param('expirationDate'),
     storeID : req.param('storeID'),
     locationID : req.param('locationID'),
@@ -110,7 +109,6 @@ app.put('/editproduct', async (req, res) => {
   var editedProduct = {
     name : req.param('name'),
     price : req.param('price'),
-    numSearches : req.param('numSearches'),
     expirationDate : req.param('expirationDate'),
     storeID : req.param('storeID'),
     locationID : req.param('locationID'),

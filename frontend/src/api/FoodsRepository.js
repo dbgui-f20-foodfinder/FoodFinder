@@ -31,7 +31,7 @@ export class FoodsRepository {
 
     updateFood(food) {
         return new Promise((resolve, reject) => {
-            axios.put(`${this.url}/editproduct?productID=+${food.id}&name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${food.expirationDate}
+            axios.put(`${this.url}/editproduct?productID=+${food.id}&name=${food.name}&price=+${food.price}&expirationDate=${food.expirationDate}
             &storeID=+1&locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}
             &isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+${food.rating}&imageURL=${food.imageURL}&productDesc=${food.description}`)
             .then(x => {
@@ -45,7 +45,7 @@ export class FoodsRepository {
     }
     createFood(food) {
         return new Promise((resolve, reject) => {
-            axios.post(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&numSearches=+0&expirationDate=${"2020-02-16"}&storeID=+1
+            axios.post(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&expirationDate=${food.expirationDate}&storeID=+1
                 &locationID=+${food.aisle}&stock=+${food.stock}&category=${food.category}&isFresh=+${food.isFresh | 0}&
                 isLocallyGrown=+${food.isLocallyGrown | 0}&rating=+5&imageURL=${food.imageURL}&productDesc=${food.description}`)
             .then(x => resolve(x.data))
