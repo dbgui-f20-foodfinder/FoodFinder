@@ -44,9 +44,6 @@ app.get('/', (req, res) => {
   res.status(200).send('Go to http://localhost:3001.');
 });
 
-// -------------------------------------------------------------------------------------
-//                                    PRODUCTS TABLE
-// -------------------------------------------------------------------------------------
 
 // /products
 // This Route is used to retrieve the entire products table.
@@ -103,6 +100,7 @@ app.post('/newproduct', async (req, res) => {
   });
 });
 
+
 // Edit an existing product in the products table.
 app.put('/editproduct', async (req, res) => {
   var productID = req.param('productID');
@@ -128,6 +126,7 @@ app.put('/editproduct', async (req, res) => {
 });
 
 
+// creates new account
 app.post('/newaccount', async (req, res) => {
   var newAccount = {
     username : req.param('username'),
@@ -143,6 +142,7 @@ app.post('/newaccount', async (req, res) => {
     res.end(JSON.stringify(result));
   });
 });
+
 
 // given a username, return the userID (This can be used to fetch other userInfo).
 app.get('/userinfo', function (req, res) {
@@ -172,7 +172,7 @@ app.get('/login', function (req, res) {
 });
 
 
-// 5.1
+// gets firstname, last name and in store credit
 app.get('/profileInfo', function (req, res) {
   var userID = req.param('userID');
 
@@ -183,7 +183,6 @@ app.get('/profileInfo', function (req, res) {
 });
 
 
-// 5.4
 // giving in store credit to a customer
 app.put('/give/instorecredit', async (req, res) => {
   var userID = req.param('userID');
@@ -196,6 +195,7 @@ app.put('/give/instorecredit', async (req, res) => {
 });
 
 
+// gives all users in store credit
 app.put('/give/all/instorecredit', async (req, res) => {
   var credit = req.param('credit');
 
@@ -220,6 +220,7 @@ app.get('/notifications', function (req, res) {
   });
 });
 
+
 // Recieve all notifications for a given user (including global notifications)
 app.get('/notifications/user', function (req, res) {
   var userID = req.param('userID');
@@ -235,6 +236,8 @@ app.get('/notifications/user', function (req, res) {
   });
 });
 
+
+// creates new global notification
 app.post('/newnotification/global', async (req, res) => {
   var newNotification = {
     notifCategoryID : req.param('notifCategoryID'),
@@ -247,6 +250,8 @@ app.post('/newnotification/global', async (req, res) => {
   });
 });
 
+
+// creates new notification specific to user
 app.post('/newnotification/user', async (req, res) => {
   var newNotification = {
     userID : req.param('userID'),
@@ -269,6 +274,7 @@ app.delete('/deletenotification', async (req, res) => {
     res.end(JSON.stringify(result));
   });
 });
+
 
 // -------------------------------------------------------------------------------------
 //                                    APIS WE USE ARE ABOVE THIS!!!
