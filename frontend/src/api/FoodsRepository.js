@@ -1,7 +1,9 @@
 import axios from 'axios';
 export class FoodsRepository {
-    url = 'http://3.137.163.61:8001';
-    // url = 'http://localhost:8001';
+
+    url = 'http://3.137.163.61:8001'; // Uncomment when hosting site on the cloud
+    // url = 'http://localhost:8001'; // Uncomment when hosting site locally
+
     getFoods() {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/products`)
@@ -15,6 +17,7 @@ export class FoodsRepository {
             });
         });
     }
+
     getFood(id) {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/product/get?productID=${id}`)
@@ -43,6 +46,7 @@ export class FoodsRepository {
             });
         });
     }
+
     createFood(food) {
         return new Promise((resolve, reject) => {
             axios.post(`${this.url}/newproduct?name=${food.name}&price=+${food.price}&expirationDate=${food.expirationDate}&storeID=+1
@@ -55,6 +59,7 @@ export class FoodsRepository {
             });
         });
     }
+
     deleteFood(id) {
         return new Promise((resolve, reject) => {
             axios.delete(`${this.url}/deleteproduct?productID=${id}`)
@@ -79,6 +84,7 @@ export class FoodsRepository {
             });
         });
     }
+
     createAccount(first, last, userName, password) {
         return new Promise((resolve, reject) => {
             axios.post(`${this.url}/newaccount?username=${userName}&password=${password}&firstName=${first}&lastName=${last}&accountTypeID=+1`)
@@ -89,6 +95,7 @@ export class FoodsRepository {
             });
         });
     }
+
     getUserID(userName) {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/userinfo?username=${userName}`)
@@ -102,6 +109,7 @@ export class FoodsRepository {
             });
         });
     }
+
     getUserInfo(id) {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/profileInfo?userID=${id}`)
@@ -214,7 +222,5 @@ export class FoodsRepository {
             });
         });
     }
-
-
 }
 export default FoodsRepository;
